@@ -30,3 +30,35 @@
     0 0 0 1px rgba(56, 189, 248, 0.25),
     0 12px 35px rgba(14, 165, 233, 0.18);
 }
+
+.hero-greeting {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.25rem;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 1.5rem;
+}
+
+.hero-greeting .name-is-text {
+  white-space: nowrap;
+}
+
+.hero-tagline-cycle {
+  animation: taglineColorCycle 6s linear infinite;
+}
+
+@keyframes taglineColorCycle {
+  0% {
+    color: #f8fafc;
+  }
+  33% {
+    color: #22d3ee;
+  }
+  66% {
+    color: #a78bfa;
+  }
+  100% {
+    color: #f8fafc;
+  }
+}
