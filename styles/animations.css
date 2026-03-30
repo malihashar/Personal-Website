@@ -45,15 +45,15 @@
 
 @keyframes taglineColorCycle {
   0% {
-    color: #f8fafc;
+    color: #ffffff;
   }
   33% {
-    color: #22d3ee;
+    color: #06b6d4;
   }
   66% {
-    color: #a78bfa;
+    color: #8b5cf6;
   }
   100% {
-    color: #f8fafc;
+    color: #ffffff;
   }
 }

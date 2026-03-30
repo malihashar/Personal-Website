@@ -8,11 +8,11 @@ const navLinks = [
 
 export default function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/85 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black">
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         <a
           href="#home"
-          className="font-heading rounded-md border border-transparent px-2 py-1 text-sm font-semibold tracking-[0.2em] text-sky-300 transition-all duration-200 hover:border-sky-400/60 hover:bg-sky-400/15 hover:text-sky-200"
+          className="font-heading rounded-md border border-transparent px-2 py-1 text-sm font-semibold tracking-[0.2em] text-cyan-300 transition-all duration-200 hover:border-cyan-300/80 hover:bg-cyan-400/20 hover:text-cyan-100"
         >
           MH
         </a>
@@ -21,7 +21,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium text-slate-300 transition hover:text-sky-300"
+                className="text-sm font-medium text-slate-200 transition hover:text-cyan-300"
               >
                 {link.label}
               </a>

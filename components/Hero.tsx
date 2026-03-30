@@ -20,7 +20,7 @@ export default function Hero() {
     >
       <div className="animated-gradient absolute inset-0 -z-20 opacity-30" />
       <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-        <p className="hero-greeting mb-2 text-sky-300">
+        <p className="hero-greeting mb-2 text-cyan-300">
           <span className="text-lg font-medium tracking-[0.08em] md:text-2xl">
             {isFrench ? "Bonjour, je m'appelle" : "Hi, my name is"}
           </span>
