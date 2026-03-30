@@ -20,11 +20,12 @@ export default function Hero() {
     >
       <div className="animated-gradient absolute inset-0 -z-20 opacity-30" />
       <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-        <p className="hero-greeting mb-3 text-sm tracking-[0.12em] text-sky-300">
-          <span>{isFrench ? "Bonjour," : "Hi,"}</span>
-          <span className="name-is-text"> my name is</span>
+        <p className="hero-greeting mb-2 text-sky-300">
+          <span className="text-lg font-medium tracking-[0.08em] md:text-2xl">
+            {isFrench ? "Bonjour, je m'appelle" : "Hi, my name is"}
+          </span>
         </p>
-        <h1 className="font-heading text-5xl font-bold leading-[1.05] text-slate-100 md:text-7xl">
+        <h1 className="font-heading -mt-1 text-5xl font-bold leading-[1.05] text-slate-100 md:text-7xl">
           <a
             href="https://github.com/malihashar"
             target="_blank"

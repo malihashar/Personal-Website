@@ -34,18 +34,13 @@
 .hero-greeting {
   align-items: center;
   display: inline-flex;
-  gap: 0.25rem;
   justify-content: center;
   line-height: 1.2;
   min-height: 1.5rem;
 }
 
-.hero-greeting .name-is-text {
-  white-space: nowrap;
-}
-
 .hero-tagline-cycle {
-  animation: taglineColorCycle 6s linear infinite;
+  animation: taglineColorCycle 4s linear infinite;
 }
 
 @keyframes taglineColorCycle {
