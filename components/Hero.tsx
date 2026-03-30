@@ -8,7 +8,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIsFrench((prev) => !prev);
-    }, 3000);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, []);
