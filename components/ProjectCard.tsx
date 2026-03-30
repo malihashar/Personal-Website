@@ -9,6 +9,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, reverse = false }: ProjectCardProps) {
+  const isRua = project.title.includes("Rua");
+
   return (
     <article className="section-card overflow-hidden rounded-2xl">
       <div className={`grid md:grid-cols-2 ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
@@ -18,6 +20,9 @@ export default function ProjectCard({ project, reverse = false }: ProjectCardPro
           rel="noreferrer"
           className="group relative block min-h-[240px] overflow-hidden bg-slate-900 md:min-h-[300px]"
         >
+          {isRua ? (
+            <span className="absolute inset-x-0 top-0 z-10 h-1.5 bg-slate-900" />
+          ) : null}
           <Image
             src={project.imageSrc}
             alt={project.imageAlt}
