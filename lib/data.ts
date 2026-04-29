@@ -70,13 +70,33 @@ export const projects: Project[] = [
 
 export const experience: ExperienceItem[] = [
   {
+    title: "Researcher",
+    organization: "University of Toronto (Hybrid)",
+    period: "Apr 2026 - Present",
+    highlights: [
+      "Contributing to research initiatives in autonomous systems and emerging technologies.",
+      "Supporting experimentation and collaborative technical development in academic settings.",
+      "Collaborating with interdisciplinary teams on applied AI and systems-based research projects.",
+    ],
+  },
+  {
+    title: "Full Stack Developer",
+    organization: "Hack The Skies",
+    period: "Apr 2026 - Present",
+    highlights: [
+      "Building and refining platform features across frontend and backend systems.",
+      "Improving participant experience through scalable and efficient technical solutions.",
+      "Contributing to architecture decisions and deployment workflows for event-facing platforms.",
+    ],
+  },
+  {
     title: "Lead Web Designer",
     organization: "Campfire",
     period: "Sep 2024 - Present",
     highlights: [
-      "Built and designed the organization's website and digital presence.",
-      "Improved engagement through responsive UI and better information flow.",
-      "Collaborated closely with organizers to amplify event visibility.",
+      "Lead design and development of the organization's website and digital presence.",
+      "Designed responsive web interfaces and branding assets for outreach initiatives.",
+      "Enhanced engagement and visibility through modern UX and optimized content strategy.",
     ],
   },
 ];
