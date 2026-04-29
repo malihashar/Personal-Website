@@ -11,6 +11,7 @@ export interface Project {
 export interface ExperienceItem {
   title: string;
   organization: string;
+  organizationUrl?: string;
   period: string;
   highlights: string[];
 }
@@ -72,6 +73,8 @@ export const experience: ExperienceItem[] = [
   {
     title: "Researcher",
     organization: "University of Toronto (Hybrid)",
+    organizationUrl:
+      "https://flight.utias.utoronto.ca/index.php/aerial-robotics-club/what-is-arc",
     period: "Apr 2026 - Present",
     highlights: [
       "Contributing to research initiatives in autonomous systems and emerging technologies.",
@@ -82,6 +85,7 @@ export const experience: ExperienceItem[] = [
   {
     title: "Full Stack Developer",
     organization: "Hack The Skies",
+    organizationUrl: "https://www.hacktheskies.com/",
     period: "Apr 2026 - Present",
     highlights: [
       "Building and refining platform features across frontend and backend systems.",

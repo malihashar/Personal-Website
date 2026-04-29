@@ -22,7 +22,20 @@ export default function Experience() {
                 <h3 className="font-heading text-lg font-semibold text-slate-100">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-sm text-cyan-300">{item.organization}</p>
+                <p className="mt-1 text-sm text-cyan-300">
+                  {item.organizationUrl ? (
+                    <a
+                      href={item.organizationUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="transition hover:text-cyan-200 hover:underline"
+                    >
+                      {item.organization}
+                    </a>
+                  ) : (
+                    item.organization
+                  )}
+                </p>
                 <p className="mt-1 text-xs uppercase tracking-[0.08em] text-slate-400">
                   {item.period}
                 </p>
