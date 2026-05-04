@@ -6,8 +6,18 @@ export interface Project {
   /** Thumbnail under `public/` (e.g. `/images/projects/rua.svg`) */
   imageSrc: string;
   imageAlt: string;
-  /** Pre-trimmed ~15s clip; loaded only on hover on fine-pointer devices */
+  /**
+   * Self-hosted clip (WebM/MP4). Prefer a pre-cut 10–15s file; if using a longer
+   * capture, set `previewVideoStartSec` / `previewVideoEndSec` for a highlight window.
+   */
   previewVideoSrc?: string;
+  /** Seconds to seek after metadata loads (highlight in a longer file). Omit if clip is pre-trimmed from 0. */
+  previewVideoStartSec?: number;
+  /**
+   * If set with start, playback loops between start and this time (seconds).
+   * Omit to loop the whole file from `previewVideoStartSec` (native `loop`).
+   */
+  previewVideoEndSec?: number;
   demoUrl?: string;
 }
 

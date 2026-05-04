@@ -8,9 +8,9 @@ export default function Projects() {
         <h2 className="font-heading text-2xl font-semibold text-slate-100 md:text-3xl">
           Projects
         </h2>
-        <p className="mt-2 max-w-2xl text-slate-300">
-          Hackathon builds and side projects. Hover a card on desktop to preview a short demo
-          clip—videos load on demand, not up front.
+        <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-slate-400">
+          Selected work—hover on desktop for a muted preview. Clips are self-hosted and load only
+          when needed.
         </p>
       </div>
 
