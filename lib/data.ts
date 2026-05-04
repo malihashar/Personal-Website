@@ -5,8 +5,10 @@ export interface Project {
   githubUrl: string;
   imageSrc: string;
   imageAlt: string;
-  /** Short code-style lines shown on project image hover */
+  /** Short code-style lines shown when hovering the project card */
   previewSnippet: string;
+  /** Muted loop clip shown on image hover (YouTube-style); local path or URL */
+  previewVideoSrc?: string;
   demoUrl?: string;
 }
 
@@ -42,6 +44,7 @@ export const projects: Project[] = [
   messages: [{ role: "user", content: expandedPrompt }],
   stream: true,
 });`,
+    previewVideoSrc: "/videos/preview-snippet.webm",
     demoUrl: "https://devpost.com/software/dubbify",
   },
   {
@@ -56,6 +59,7 @@ export const projects: Project[] = [
   const draft = await generateLayout(prompt);
   return applyGenAIEdits(draft, { temperature: 0.4 });
 }`,
+    previewVideoSrc: "/videos/preview-snippet.webm",
     demoUrl: "https://devpost.com/software/rua",
   },
   {
@@ -71,6 +75,7 @@ export const projects: Project[] = [
   .select("id, geojson, priority")
   .gte("updated_at", since);
 map.getSource("routes").setData(data);`,
+    previewVideoSrc: "/videos/preview-snippet.webm",
     demoUrl: "https://devpost.com/software/shafaf",
   },
   {
@@ -86,6 +91,7 @@ map.getSource("routes").setData(data);`,
   await broadcast("profile:update", badge);
   res.json(badge);
 });`,
+    previewVideoSrc: "/videos/preview-snippet.webm",
     demoUrl: "https://devpost.com/software/synapse-y824pm",
   },
 ];
