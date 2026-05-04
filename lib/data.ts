@@ -3,14 +3,10 @@ export interface Project {
   description: string;
   techStack: string[];
   githubUrl: string;
-  /** Devpost gallery or other HTTPS image URL */
+  /** Thumbnail under `public/` (e.g. `/images/projects/rua.svg`) */
   imageSrc: string;
   imageAlt: string;
-  /** Short code-style lines shown when hovering the project card */
-  previewSnippet: string;
-  /** YouTube video id from the project demo (Devpost embed); hover preview on the image */
-  previewYoutubeId?: string;
-  /** Optional direct video file (e.g. /videos/clip.webm) if not using YouTube */
+  /** Pre-trimmed ~15s clip; loaded only on hover on fine-pointer devices */
   previewVideoSrc?: string;
   demoUrl?: string;
 }
@@ -35,70 +31,46 @@ export interface SkillGroup {
 
 export const projects: Project[] = [
   {
-    title: "Dubbify (Winner – Hack Canada)",
+    title: "Dubbify",
     description:
-      "AI-powered content expansion platform with real-time text processing workflows connected to an LLM backend.",
+      "Conference calls with real-time translation so everyone hears their own language. Hack Canada winner.",
     techStack: ["Next.js", "TypeScript", "FastAPI"],
     githubUrl: "https://github.com/malihashar/HackCan",
-    imageSrc:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/407/976/datas/gallery.jpg",
-    imageAlt: "Dubbify call processing interface during translation workflow",
-    previewSnippet: `const stream = await openAI.chat.completions.create({
-  model: "gpt-4o-mini",
-  messages: [{ role: "user", content: expandedPrompt }],
-  stream: true,
-});`,
-    previewYoutubeId: "xGq-RJuse_E",
+    imageSrc: "/images/projects/dubbify.svg",
+    imageAlt: "Dubbify — live translation for conference calls",
+    previewVideoSrc: "/videos/projects/dubbify.webm",
     demoUrl: "https://devpost.com/software/dubbify",
   },
   {
-    title: "Rua – AI Development Platform",
+    title: "Rua",
     description:
-      "AI-powered platform to streamline application development with generative workflows for code iteration and rapid prototyping.",
+      "Detects and maps urban road hazards in real time with AI, maps, and citizen reports for smarter repairs.",
     techStack: ["Next.js", "TypeScript", "GenAI APIs"],
     githubUrl: "https://github.com/vsaios/GenAI-2026",
-    imageSrc:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/444/222/datas/gallery.jpg",
-    imageAlt: "Rua map dashboard for reporting and tracking city incidents",
-    previewSnippet: `export async function refineComponent(prompt: string) {
-  const draft = await generateLayout(prompt);
-  return applyGenAIEdits(draft, { temperature: 0.4 });
-}`,
-    previewYoutubeId: "g27RnwKWP98",
+    imageSrc: "/images/projects/rua.svg",
+    imageAlt: "Rua — urban road hazard mapping",
+    previewVideoSrc: "/videos/projects/rua.webm",
     demoUrl: "https://devpost.com/software/rua",
   },
   {
-    title: "Shafaf – Aid Coordination Platform",
-    description:
-      "Aid coordination platform with real-time geospatial dashboarding for donors, mosques, and administrative teams.",
+    title: "Shafaf",
+    description: "Transparent aid coordination with geospatial tooling for donors and field teams.",
     techStack: ["Next.js", "Supabase", "Mapbox"],
     githubUrl: "https://github.com/Awais-H/Shafaf-Aid",
-    imageSrc:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/209/340/datas/gallery.jpg",
-    imageAlt: "Shafaf global geospatial dashboard with 3D map visualization",
-    previewSnippet: `const { data } = await supabase
-  .from("aid_routes")
-  .select("id, geojson, priority")
-  .gte("updated_at", since);
-map.getSource("routes").setData(data);`,
-    previewYoutubeId: "RTx2lxVEbZA",
+    imageSrc: "/images/projects/shafaf.svg",
+    imageAlt: "Shafaf — aid coordination platform",
+    previewVideoSrc: "/videos/projects/shafaf.webm",
     demoUrl: "https://devpost.com/software/shafaf",
   },
   {
-    title: "Synapse – Identity Network",
+    title: "Synapse",
     description:
-      "Networking platform with tradeable identity cards, profile customization, and a badge-driven engagement system.",
+      "Networking with collectible-style cards and tokens to make identity and connections more engaging.",
     techStack: ["JavaScript", "Express", "MongoDB"],
     githubUrl: "https://github.com/malihashar",
-    imageSrc:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/172/337/datas/gallery.jpg",
-    imageAlt: "Synapse networking dashboard showing user profile and connections",
-    previewSnippet: `router.post("/profiles/:id/badges", async (req, res) => {
-  const badge = await Badge.issue(req.params.id, req.body);
-  await broadcast("profile:update", badge);
-  res.json(badge);
-});`,
-    previewYoutubeId: "bCCNENV0fvs",
+    imageSrc: "/images/projects/synapse.svg",
+    imageAlt: "Synapse — identity and networking cards",
+    previewVideoSrc: "/videos/projects/synapse.webm",
     demoUrl: "https://devpost.com/software/synapse-y824pm",
   },
 ];
