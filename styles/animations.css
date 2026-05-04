@@ -57,3 +57,19 @@
     color: #ffffff;
   }
 }
+
+@keyframes timeline-node-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.85);
+  }
+}
+
+.timeline-node-ring {
+  animation: timeline-node-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}

@@ -11,13 +11,25 @@ export default function Experience() {
           Experience
         </h2>
         <p className="mt-2 text-sm text-slate-400">Recent to older roles</p>
-        <div className="relative mt-6 space-y-6">
-          <span className="absolute bottom-0 left-[11px] top-0 w-px bg-slate-700/80" />
-          {experience.map((item) => (
-            <article key={item.title} className="relative pl-10">
-              <span className="absolute left-0 top-2.5 h-6 w-6 rounded-full border border-cyan-300/60 bg-slate-900">
-                <span className="absolute left-1.5 top-1.5 h-3 w-3 rounded-full bg-cyan-300" />
-              </span>
+        <div className="relative mt-6 flex flex-col gap-6">
+          <span
+            className="pointer-events-none absolute bottom-0 left-4 top-0 w-px -translate-x-1/2 bg-slate-700/80"
+            aria-hidden
+          />
+          {experience.map((item, index) => (
+            <article
+              key={item.title}
+              className="relative grid grid-cols-[2rem_minmax(0,1fr)] gap-x-4"
+            >
+              <div className="relative z-10 flex w-8 justify-center pt-2.5">
+                <span className="relative flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-cyan-300/60 bg-slate-900">
+                  <span
+                    className="timeline-node-ring pointer-events-none absolute inset-0 rounded-full border border-cyan-300/50"
+                    style={{ animationDelay: `${index * 0.45}s` }}
+                  />
+                  <span className="relative z-10 h-3 w-3 animate-pulse rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(34,211,238,0.55)]" />
+                </span>
+              </div>
               <div className="rounded-xl border border-slate-700/70 bg-slate-900/40 p-4">
                 <h3 className="font-heading text-lg font-semibold text-slate-100">
                   {item.title}
