@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import type { Project } from "@/lib/data";
 
 interface ProjectCardProps {
@@ -9,17 +9,35 @@ interface ProjectCardProps {
   reverse?: boolean;
 }
 
+function youtubeEmbedSrc(id: string) {
+  const q = new URLSearchParams({
+    autoplay: "1",
+    mute: "1",
+    controls: "0",
+    modestbranding: "1",
+    playsinline: "1",
+    rel: "0",
+    loop: "1",
+    playlist: id,
+  });
+  return `https://www.youtube.com/embed/${id}?${q.toString()}`;
+}
+
 export default function ProjectCard({ project, reverse = false }: ProjectCardProps) {
   const snippetLines = project.previewSnippet.trim().split("\n");
   const videoRef = useRef<HTMLVideoElement>(null);
-  const hasVideo = Boolean(project.previewVideoSrc);
+  const [mediaHot, setMediaHot] = useState(false);
+
+  const hasFileVideo = Boolean(project.previewVideoSrc);
+  const hasYoutube = Boolean(project.previewYoutubeId);
 
   const onMediaEnter = useCallback(() => {
-    if (!hasVideo) return;
-    void videoRef.current?.play().catch(() => {});
-  }, [hasVideo]);
+    setMediaHot(true);
+    if (hasFileVideo) void videoRef.current?.play().catch(() => {});
+  }, [hasFileVideo]);
 
   const onMediaLeave = useCallback(() => {
+    setMediaHot(false);
     const v = videoRef.current;
     if (!v) return;
     v.pause();
@@ -48,7 +66,17 @@ export default function ProjectCard({ project, reverse = false }: ProjectCardPro
             />
           </div>
 
-          {hasVideo ? (
+          {hasYoutube && mediaHot && project.previewYoutubeId ? (
+            <iframe
+              title={`${project.title} demo video preview`}
+              src={youtubeEmbedSrc(project.previewYoutubeId)}
+              className="pointer-events-none absolute inset-0 z-10 h-[115%] w-full min-w-full -translate-y-[6%] scale-[1.08] border-0 motion-reduce:hidden"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          ) : null}
+
+          {hasFileVideo && !hasYoutube ? (
             <video
               ref={videoRef}
               src={project.previewVideoSrc}
