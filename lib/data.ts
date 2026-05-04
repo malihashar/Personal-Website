@@ -14,6 +14,12 @@ export interface Project {
   previewVideoStartSec?: number;
   /** Loop window end (seconds); omit for full-file loop from start offset */
   previewVideoEndSec?: number;
+  /** Optional extra copy on the media column (minimal hover strip) */
+  mediaHover?: {
+    title: string;
+    description: string;
+    tags: readonly string[];
+  };
 }
 
 export interface ExperienceItem {
@@ -43,9 +49,9 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "FastAPI"],
     githubUrl: "https://github.com/malihashar/HackCan",
     image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/407/976/datas/gallery.jpg",
-    imageAlt: "Dubbify call processing interface during translation workflow",
-    video: "/videos/projects/dubbify.webm",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/407/977/datas/gallery.jpg",
+    imageAlt: "Dubbify call flow UI—incoming call, translation, and operator view",
+    video: "/projects/dubbify.mp4",
     demoUrl: "https://devpost.com/software/dubbify",
   },
   {
@@ -58,8 +64,14 @@ export const projects: Project[] = [
     image:
       "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/444/222/datas/gallery.jpg",
     imageAlt: "Rua map dashboard for reporting and tracking city incidents",
-    video: "/videos/projects/rua.webm",
+    video: "/projects/rua.mp4",
     demoUrl: "https://devpost.com/software/rua",
+    mediaHover: {
+      title: "Rua – AI Development Platform",
+      description:
+        "AI-powered platform to streamline application development with generative workflows for code iteration and rapid prototyping.",
+      tags: ["Next.js", "TypeScript", "GenAI APIs", "GitHub", "Devpost"] as const,
+    },
   },
   {
     id: "shafaf",
@@ -71,7 +83,7 @@ export const projects: Project[] = [
     image:
       "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/209/340/datas/gallery.jpg",
     imageAlt: "Shafaf global geospatial dashboard with 3D map visualization",
-    video: "/videos/projects/shafaf.webm",
+    video: "/projects/shafaf.mp4",
     demoUrl: "https://devpost.com/software/shafaf",
   },
   {
@@ -84,7 +96,7 @@ export const projects: Project[] = [
     image:
       "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/172/337/datas/gallery.jpg",
     imageAlt: "Synapse networking dashboard showing user profile and connections",
-    video: "/videos/projects/synapse.webm",
+    video: "/projects/synapse.mp4",
     demoUrl: "https://devpost.com/software/synapse-y824pm",
   },
 ];

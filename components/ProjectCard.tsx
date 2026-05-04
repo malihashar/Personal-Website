@@ -159,11 +159,7 @@ export default function ProjectCard({ project, reverse = false }: ProjectCardPro
       <div
         className={`grid md:grid-cols-2 md:items-stretch ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}
       >
-        <div
-          className="group/media relative isolate aspect-[16/10] w-full overflow-hidden bg-slate-900 md:aspect-auto md:h-full md:min-h-[280px]"
-          onMouseEnter={startHoverMedia}
-          onMouseLeave={endHoverMedia}
-        >
+        <div className="group/media relative isolate aspect-[16/10] w-full overflow-hidden bg-slate-900 md:aspect-auto md:h-full md:min-h-[280px]">
           <div className="absolute inset-0">
             <Image
               src={project.image}
@@ -184,10 +180,11 @@ export default function ProjectCard({ project, reverse = false }: ProjectCardPro
               className={`pointer-events-none absolute inset-0 z-10 h-full w-full select-none object-cover transition-opacity duration-300 ease-out motion-reduce:transition-none ${
                 videoReady ? "opacity-100" : "opacity-0"
               }`}
+              autoPlay
               muted
               playsInline
               loop={!segmentLoop}
-              preload="none"
+              preload="metadata"
               disablePictureInPicture
               controls={false}
               onLoadedMetadata={onLoadedMetadata}
@@ -210,6 +207,29 @@ export default function ProjectCard({ project, reverse = false }: ProjectCardPro
             aria-hidden
           />
 
+          {project.mediaHover ? (
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[13] translate-y-1 px-4 pb-3 pt-10 opacity-0 transition duration-300 ease-out group-hover/media:translate-y-0 group-hover/media:opacity-100 md:px-5 md:pb-4">
+              <div className="rounded-lg border border-white/10 bg-slate-950/80 px-3 py-2.5 shadow-lg backdrop-blur-md">
+                <p className="font-heading text-xs font-semibold tracking-tight text-slate-100 md:text-sm">
+                  {project.mediaHover.title}
+                </p>
+                <p className="mt-1 text-[11px] leading-snug text-slate-400 md:text-xs">
+                  {project.mediaHover.description}
+                </p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {project.mediaHover.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2 py-0.5 text-[10px] text-sky-200/95"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : null}
+
           <span className="pointer-events-none absolute right-3 top-3 z-[15] translate-y-1 rounded-full bg-slate-950/70 px-2.5 py-1 text-[10px] font-medium text-slate-200 opacity-0 shadow-sm backdrop-blur-sm transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
             Open demo
           </span>
@@ -219,6 +239,8 @@ export default function ProjectCard({ project, reverse = false }: ProjectCardPro
             target="_blank"
             rel="noreferrer"
             className="absolute inset-0 z-20 rounded-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
+            onMouseEnter={startHoverMedia}
+            onMouseLeave={endHoverMedia}
           >
             <span className="sr-only">Open {project.title} demo</span>
           </a>
