@@ -14,12 +14,6 @@ export interface Project {
   previewVideoStartSec?: number;
   /** Loop window end (seconds); omit for full-file loop from start offset */
   previewVideoEndSec?: number;
-  /** Optional extra copy on the media column (minimal hover strip) */
-  mediaHover?: {
-    title: string;
-    description: string;
-    tags: readonly string[];
-  };
 }
 
 export interface ExperienceItem {
@@ -49,8 +43,8 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "FastAPI"],
     githubUrl: "https://github.com/malihashar/HackCan",
     image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/407/977/datas/gallery.jpg",
-    imageAlt: "Dubbify call flow UI—incoming call, translation, and operator view",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/425/026/datas/gallery.jpg",
+    imageAlt: "Dubbify in-call dashboard with live translation and session controls",
     video: "/projects/dubbify.mp4",
     demoUrl: "https://devpost.com/software/dubbify",
   },
@@ -66,12 +60,6 @@ export const projects: Project[] = [
     imageAlt: "Rua map dashboard for reporting and tracking city incidents",
     video: "/projects/rua.mp4",
     demoUrl: "https://devpost.com/software/rua",
-    mediaHover: {
-      title: "Rua – AI Development Platform",
-      description:
-        "AI-powered platform to streamline application development with generative workflows for code iteration and rapid prototyping.",
-      tags: ["Next.js", "TypeScript", "GenAI APIs", "GitHub", "Devpost"] as const,
-    },
   },
   {
     id: "shafaf",
@@ -103,7 +91,7 @@ export const projects: Project[] = [
 
 export const experience: ExperienceItem[] = [
   {
-    title: "Researcher",
+    title: "Research Intern",
     organization: "University of Toronto (Hybrid)",
     organizationUrl:
       "https://flight.utias.utoronto.ca/index.php/aerial-robotics-club/what-is-arc",
