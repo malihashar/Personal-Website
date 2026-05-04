@@ -6,24 +6,10 @@ import type { Project } from "@/lib/data";
 
 interface ProjectCardProps {
   project: Project;
+  reverse?: boolean;
 }
 
-function useFineHoverDevice() {
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const sync = () => setEnabled(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
-
-  return enabled;
-}
-
-export default function ProjectCard({ project }: ProjectCardProps) {
-  const fineHover = useFineHoverDevice();
+export default function ProjectCard({ project, reverse = false }: ProjectCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const primedRef = useRef(false);
   const seekFallbackRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -31,7 +17,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const [videoReady, setVideoReady] = useState(false);
 
   const demoHref = project.demoUrl ?? project.githubUrl;
-  const hasVideo = Boolean(project.previewVideoSrc);
+  const hasVideo = Boolean(project.video);
   const startSec = project.previewVideoStartSec ?? 0;
   const endSec = project.previewVideoEndSec;
   const segmentLoop =
@@ -53,24 +39,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   }, []);
 
   const startHoverMedia = useCallback(() => {
-    if (!fineHover || !hasVideo || !project.previewVideoSrc) return;
+    if (!hasVideo || !project.video) return;
     primedRef.current = false;
     setVideoActive(true);
     setVideoReady(false);
-  }, [fineHover, hasVideo, project.previewVideoSrc]);
+  }, [hasVideo, project.video]);
 
-  const tryPlayAfterSeek = useCallback(
-    (v: HTMLVideoElement) => {
-      if (primedRef.current) return;
-      primedRef.current = true;
-      void v.play().catch(() => {
-        primedRef.current = false;
-        setVideoReady(false);
-        setVideoActive(false);
-      });
-    },
-    [],
-  );
+  const tryPlayAfterSeek = useCallback((v: HTMLVideoElement) => {
+    if (primedRef.current) return;
+    primedRef.current = true;
+    void v.play().catch(() => {
+      primedRef.current = false;
+      setVideoReady(false);
+      setVideoActive(false);
+    });
+  }, []);
 
   const onLoadedMetadata = useCallback(() => {
     const v = videoRef.current;
@@ -168,66 +151,120 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     };
   }, []);
 
-  const showVideoLayer = fineHover && hasVideo && videoActive;
+  const showVideoLayer = hasVideo && videoActive;
   const imageFadeOut = showVideoLayer && videoReady;
 
   return (
-    <a
-      href={demoHref}
-      target="_blank"
-      rel="noreferrer"
-      className="group/card relative block aspect-[16/10] overflow-hidden rounded-2xl bg-slate-950 shadow-[0_1px_0_rgba(255,255,255,0.06)_inset,0_18px_48px_-24px_rgba(0,0,0,0.75)] ring-1 ring-white/[0.06] transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform outline-none motion-reduce:transition-none focus-visible:ring-2 focus-visible:ring-sky-400/35 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 [@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_0_0_1px_rgba(56,189,248,0.12),0_0_48px_-16px_rgba(34,211,238,0.22),0_28px_56px_-28px_rgba(0,0,0,0.85)] motion-reduce:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-100 motion-reduce:[@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_1px_0_rgba(255,255,255,0.06)_inset,0_18px_48px_-24px_rgba(0,0,0,0.75)]"
-      onMouseEnter={startHoverMedia}
-      onMouseLeave={endHoverMedia}
-    >
-      <div className="absolute inset-0 overflow-hidden">
-        <Image
-          src={project.imageSrc}
-          alt={project.imageAlt}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className={`object-cover transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
-            imageFadeOut ? "opacity-0" : "opacity-100"
-          }`}
-          unoptimized={project.imageSrc.endsWith(".svg")}
-        />
-      </div>
-
-      {showVideoLayer && project.previewVideoSrc ? (
-        <video
-          ref={videoRef}
-          src={project.previewVideoSrc}
-          className={`pointer-events-none absolute inset-0 z-[1] h-full w-full select-none object-cover transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
-            videoReady ? "opacity-100" : "opacity-0"
-          }`}
-          muted
-          playsInline
-          loop={!segmentLoop}
-          preload="none"
-          disablePictureInPicture
-          controls={false}
-          onLoadedMetadata={onLoadedMetadata}
-          onSeeked={onSeeked}
-          onPlaying={onPlaying}
-          onEnded={onEnded}
-          onTimeUpdate={onTimeUpdate}
-          onError={onVideoError}
-          aria-hidden
-        />
-      ) : null}
-
+    <article className="group section-card overflow-hidden rounded-2xl transition-shadow duration-300 group-hover:shadow-[0_0_0_1px_rgba(56,189,248,0.2),0_24px_50px_-12px_rgba(14,165,233,0.15)]">
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] bg-gradient-to-t from-slate-950 via-slate-950/55 to-transparent pb-4 pt-20 px-4 md:pb-5 md:px-5"
-        aria-hidden
+        className={`grid md:grid-cols-2 md:items-stretch ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}
       >
-        <h3 className="font-heading text-lg font-semibold tracking-tight text-white/95 md:text-xl">
-          {project.title}
-        </h3>
-      </div>
+        <div
+          className="group/media relative isolate aspect-[16/10] w-full overflow-hidden bg-slate-900 md:aspect-auto md:h-full md:min-h-[280px]"
+          onMouseEnter={startHoverMedia}
+          onMouseLeave={endHoverMedia}
+        >
+          <div className="absolute inset-0">
+            <Image
+              src={project.image}
+              alt={project.imageAlt}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className={`object-cover transition duration-500 ease-out group-hover:scale-[1.07] group-hover:brightness-[1.08] motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${
+                imageFadeOut ? "opacity-0" : "opacity-100"
+              }`}
+              unoptimized={project.image.endsWith(".svg")}
+            />
+          </div>
 
-      <span className="sr-only">
-        View {project.title} on Devpost{project.description ? `. ${project.description}` : ""}
-      </span>
-    </a>
+          {showVideoLayer && project.video ? (
+            <video
+              ref={videoRef}
+              src={project.video}
+              className={`pointer-events-none absolute inset-0 z-10 h-full w-full select-none object-cover transition-opacity duration-300 ease-out motion-reduce:transition-none ${
+                videoReady ? "opacity-100" : "opacity-0"
+              }`}
+              muted
+              playsInline
+              loop={!segmentLoop}
+              preload="none"
+              disablePictureInPicture
+              controls={false}
+              onLoadedMetadata={onLoadedMetadata}
+              onSeeked={onSeeked}
+              onPlaying={onPlaying}
+              onEnded={onEnded}
+              onTimeUpdate={onTimeUpdate}
+              onError={onVideoError}
+              aria-hidden
+            />
+          ) : null}
+
+          <div
+            className="pointer-events-none absolute inset-0 z-[11] bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent opacity-40 transition duration-500 group-hover:opacity-90"
+            aria-hidden
+          />
+
+          <div
+            className="pointer-events-none absolute inset-0 z-[12] ring-0 ring-cyan-400/0 transition duration-300 group-hover:ring-2 group-hover:ring-inset group-hover:ring-cyan-400/35"
+            aria-hidden
+          />
+
+          <span className="pointer-events-none absolute right-3 top-3 z-[15] translate-y-1 rounded-full bg-slate-950/70 px-2.5 py-1 text-[10px] font-medium text-slate-200 opacity-0 shadow-sm backdrop-blur-sm transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+            Open demo
+          </span>
+
+          <a
+            href={demoHref}
+            target="_blank"
+            rel="noreferrer"
+            className="absolute inset-0 z-20 rounded-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
+          >
+            <span className="sr-only">Open {project.title} demo</span>
+          </a>
+        </div>
+
+        <div className="relative p-6 transition-colors duration-300 group-hover:bg-slate-900/25 md:p-8">
+          <h3 className="font-heading text-2xl font-semibold text-slate-100 transition-colors duration-300 group-hover:text-white">
+            {project.title}
+          </h3>
+          <p className="mt-3 text-sm font-normal leading-relaxed text-slate-300 transition-colors duration-300 group-hover:text-slate-200 md:text-base">
+            {project.description}
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-full border border-sky-300/30 bg-sky-400/10 px-3 py-1 text-xs text-sky-200 transition-colors duration-300 group-hover:border-sky-300/45"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-6 flex items-center gap-4 text-sm">
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="relative z-30 text-slate-200 transition hover:text-sky-300"
+            >
+              GitHub
+            </a>
+            {project.demoUrl ? (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="relative z-30 text-slate-200 transition hover:text-sky-300"
+              >
+                Devpost
+              </a>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </article>
   );
 }

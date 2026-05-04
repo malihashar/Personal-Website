@@ -1,24 +1,19 @@
 export interface Project {
+  id: string;
   title: string;
+  /** Thumbnail (Devpost gallery or file under `public/`) */
+  image: string;
+  /** Optional self-hosted preview clip (WebM/MP4), loaded only on hover */
+  video?: string;
+  imageAlt: string;
   description: string;
   techStack: string[];
   githubUrl: string;
-  /** Thumbnail under `public/` (e.g. `/images/projects/rua.svg`) */
-  imageSrc: string;
-  imageAlt: string;
-  /**
-   * Self-hosted clip (WebM/MP4). Prefer a pre-cut 10–15s file; if using a longer
-   * capture, set `previewVideoStartSec` / `previewVideoEndSec` for a highlight window.
-   */
-  previewVideoSrc?: string;
-  /** Seconds to seek after metadata loads (highlight in a longer file). Omit if clip is pre-trimmed from 0. */
-  previewVideoStartSec?: number;
-  /**
-   * If set with start, playback loops between start and this time (seconds).
-   * Omit to loop the whole file from `previewVideoStartSec` (native `loop`).
-   */
-  previewVideoEndSec?: number;
   demoUrl?: string;
+  /** Seconds to seek after metadata loads (highlight in a longer file) */
+  previewVideoStartSec?: number;
+  /** Loop window end (seconds); omit for full-file loop from start offset */
+  previewVideoEndSec?: number;
 }
 
 export interface ExperienceItem {
@@ -41,46 +36,55 @@ export interface SkillGroup {
 
 export const projects: Project[] = [
   {
-    title: "Dubbify",
+    id: "dubbify",
+    title: "Dubbify (Winner – Hack Canada)",
     description:
-      "Conference calls with real-time translation so everyone hears their own language. Hack Canada winner.",
+      "AI-powered content expansion platform with real-time text processing workflows connected to an LLM backend.",
     techStack: ["Next.js", "TypeScript", "FastAPI"],
     githubUrl: "https://github.com/malihashar/HackCan",
-    imageSrc: "/images/projects/dubbify.svg",
-    imageAlt: "Dubbify — live translation for conference calls",
-    previewVideoSrc: "/videos/projects/dubbify.webm",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/407/976/datas/gallery.jpg",
+    imageAlt: "Dubbify call processing interface during translation workflow",
+    video: "/videos/projects/dubbify.webm",
     demoUrl: "https://devpost.com/software/dubbify",
   },
   {
-    title: "Rua",
+    id: "rua",
+    title: "Rua – AI Development Platform",
     description:
-      "Detects and maps urban road hazards in real time with AI, maps, and citizen reports for smarter repairs.",
+      "AI-powered platform to streamline application development with generative workflows for code iteration and rapid prototyping.",
     techStack: ["Next.js", "TypeScript", "GenAI APIs"],
     githubUrl: "https://github.com/vsaios/GenAI-2026",
-    imageSrc: "/images/projects/rua.svg",
-    imageAlt: "Rua — urban road hazard mapping",
-    previewVideoSrc: "/videos/projects/rua.webm",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/444/222/datas/gallery.jpg",
+    imageAlt: "Rua map dashboard for reporting and tracking city incidents",
+    video: "/videos/projects/rua.webm",
     demoUrl: "https://devpost.com/software/rua",
   },
   {
-    title: "Shafaf",
-    description: "Transparent aid coordination with geospatial tooling for donors and field teams.",
+    id: "shafaf",
+    title: "Shafaf – Aid Coordination Platform",
+    description:
+      "Aid coordination platform with real-time geospatial dashboarding for donors, mosques, and administrative teams.",
     techStack: ["Next.js", "Supabase", "Mapbox"],
     githubUrl: "https://github.com/Awais-H/Shafaf-Aid",
-    imageSrc: "/images/projects/shafaf.svg",
-    imageAlt: "Shafaf — aid coordination platform",
-    previewVideoSrc: "/videos/projects/shafaf.webm",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/209/340/datas/gallery.jpg",
+    imageAlt: "Shafaf global geospatial dashboard with 3D map visualization",
+    video: "/videos/projects/shafaf.webm",
     demoUrl: "https://devpost.com/software/shafaf",
   },
   {
-    title: "Synapse",
+    id: "synapse",
+    title: "Synapse – Identity Network",
     description:
-      "Networking with collectible-style cards and tokens to make identity and connections more engaging.",
+      "Networking platform with tradeable identity cards, profile customization, and a badge-driven engagement system.",
     techStack: ["JavaScript", "Express", "MongoDB"],
     githubUrl: "https://github.com/malihashar",
-    imageSrc: "/images/projects/synapse.svg",
-    imageAlt: "Synapse — identity and networking cards",
-    previewVideoSrc: "/videos/projects/synapse.webm",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/172/337/datas/gallery.jpg",
+    imageAlt: "Synapse networking dashboard showing user profile and connections",
+    video: "/videos/projects/synapse.webm",
     demoUrl: "https://devpost.com/software/synapse-y824pm",
   },
 ];

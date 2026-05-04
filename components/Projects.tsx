@@ -8,15 +8,14 @@ export default function Projects() {
         <h2 className="font-heading text-2xl font-semibold text-slate-100 md:text-3xl">
           Projects
         </h2>
-        <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-slate-400">
-          Selected work—hover on desktop for a muted preview. Clips are self-hosted and load only
-          when needed.
+        <p className="mt-2 text-slate-300">
+          Selected builds across AI, networking, humanitarian tech, and analytics.
         </p>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+      <div className="space-y-6">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} reverse={index % 2 === 1} />
         ))}
       </div>
     </section>
