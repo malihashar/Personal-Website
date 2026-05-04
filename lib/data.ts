@@ -5,6 +5,8 @@ export interface Project {
   githubUrl: string;
   imageSrc: string;
   imageAlt: string;
+  /** Short code-style lines shown on project image hover */
+  previewSnippet: string;
   demoUrl?: string;
 }
 
@@ -33,8 +35,13 @@ export const projects: Project[] = [
       "AI-powered content expansion platform with real-time text processing workflows connected to an LLM backend.",
     techStack: ["Next.js", "TypeScript", "FastAPI"],
     githubUrl: "https://github.com/malihashar/HackCan",
-    imageSrc: "/images/projects/dubbify.png",
+    imageSrc: "/images/projects/dubbify.svg",
     imageAlt: "Dubbify call processing interface during translation workflow",
+    previewSnippet: `const stream = await openAI.chat.completions.create({
+  model: "gpt-4o-mini",
+  messages: [{ role: "user", content: expandedPrompt }],
+  stream: true,
+});`,
     demoUrl: "https://devpost.com/software/dubbify",
   },
   {
@@ -43,8 +50,12 @@ export const projects: Project[] = [
       "AI-powered platform to streamline application development with generative workflows for code iteration and rapid prototyping.",
     techStack: ["Next.js", "TypeScript", "GenAI APIs"],
     githubUrl: "https://github.com/vsaios/GenAI-2026",
-    imageSrc: "/images/projects/rua.png",
+    imageSrc: "/images/projects/rua.svg",
     imageAlt: "Rua map dashboard for reporting and tracking city incidents",
+    previewSnippet: `export async function refineComponent(prompt: string) {
+  const draft = await generateLayout(prompt);
+  return applyGenAIEdits(draft, { temperature: 0.4 });
+}`,
     demoUrl: "https://devpost.com/software/rua",
   },
   {
@@ -53,8 +64,13 @@ export const projects: Project[] = [
       "Aid coordination platform with real-time geospatial dashboarding for donors, mosques, and administrative teams.",
     techStack: ["Next.js", "Supabase", "Mapbox"],
     githubUrl: "https://github.com/Awais-H/Shafaf-Aid",
-    imageSrc: "/images/projects/shafaf.jpg",
+    imageSrc: "/images/projects/shafaf.svg",
     imageAlt: "Shafaf global geospatial dashboard with 3D map visualization",
+    previewSnippet: `const { data } = await supabase
+  .from("aid_routes")
+  .select("id, geojson, priority")
+  .gte("updated_at", since);
+map.getSource("routes").setData(data);`,
     demoUrl: "https://devpost.com/software/shafaf",
   },
   {
@@ -63,8 +79,13 @@ export const projects: Project[] = [
       "Networking platform with tradeable identity cards, profile customization, and a badge-driven engagement system.",
     techStack: ["JavaScript", "Express", "MongoDB"],
     githubUrl: "https://github.com/malihashar",
-    imageSrc: "/images/projects/synapse.png",
+    imageSrc: "/images/projects/synapse.svg",
     imageAlt: "Synapse networking dashboard showing user profile and connections",
+    previewSnippet: `router.post("/profiles/:id/badges", async (req, res) => {
+  const badge = await Badge.issue(req.params.id, req.body);
+  await broadcast("profile:update", badge);
+  res.json(badge);
+});`,
     demoUrl: "https://devpost.com/software/synapse-y824pm",
   },
 ];

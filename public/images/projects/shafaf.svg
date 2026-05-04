@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="Shafaf project preview">
+  <defs>
+    <linearGradient id="sha" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#022c22"/>
+      <stop offset="55%" style="stop-color:#134e4a"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sha)"/>
+  <text x="800" y="520" text-anchor="middle" fill="#ecfdf5" font-family="ui-sans-serif,system-ui,sans-serif" font-size="72" font-weight="600">Shafaf</text>
+</svg>
