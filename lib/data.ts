@@ -68,8 +68,9 @@ export const projects: Project[] = [
       "Spatiotemporal wildfire prediction model using ConvLSTM to forecast fire spread from sequential environmental and satellite inputs.",
     techStack: ["Python", "ConvLSTM", "PyTorch", "NumPy"],
     githubUrl: "https://github.com/malihashar",
-    image: "/images/projects/wildfire-convlstm.svg",
-    imageAlt: "ConvLSTM wildfire prediction model visualization",
+    image: "/images/projects/wildfire-convlstm.jpg",
+    imageAlt:
+      "Bird's-eye UAV infrared view detecting wildfire hotspots across mountain terrain",
   },
   {
     id: "rua",
@@ -91,8 +92,9 @@ export const projects: Project[] = [
       "Used NSGA-II, a genetic algorithm, together with D* to find optimal paths for stopping wildfire spread under multi-objective constraints.",
     techStack: ["Python", "NSGA-II", "D*", "Optimization"],
     githubUrl: "https://github.com/malihashar",
-    image: "/images/projects/wildfire-nsga.svg",
-    imageAlt: "NSGA-II and D-star optimal wildfire containment path visualization",
+    image: "/images/projects/wildfire-nsga.jpg",
+    imageAlt:
+      "Aerial view of a wildfire fuel break containment path separating burned hillside from a community",
   },
   {
     id: "shafaf",
