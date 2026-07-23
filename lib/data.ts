@@ -38,9 +38,9 @@ export interface SkillGroup {
 export const projects: Project[] = [
   {
     id: "rouge",
-    title: "Rouge (Winner – Outstanding Project)",
+    title: "Rouge (Winner, Outstanding Project)",
     description:
-      "Making learning PCB and circuits accessible through Minecraft — an interactive world where players build and understand electronics by doing.",
+      "Making learning PCB and circuits accessible through Minecraft, an interactive world where players build and understand electronics by doing.",
     techStack: ["Java", "Minecraft", "Fabric", "ElevenLabs", "MongoDB", "Python"],
     githubUrl: "https://github.com/Dhanika-Botejue/rouge",
     image:
@@ -50,7 +50,7 @@ export const projects: Project[] = [
   },
   {
     id: "dubbify",
-    title: "Dubbify (Winner – Hack Canada)",
+    title: "Dubbify (Winner, Hack Canada)",
     description:
       "AI-powered content expansion platform with real-time text processing workflows connected to an LLM backend.",
     techStack: ["Next.js", "TypeScript", "FastAPI"],
@@ -73,7 +73,7 @@ export const projects: Project[] = [
   },
   {
     id: "rua",
-    title: "Rua – AI Development Platform",
+    title: "Rua, AI Development Platform",
     description:
       "AI-powered platform to streamline application development with generative workflows for code iteration and rapid prototyping.",
     techStack: ["Next.js", "TypeScript", "GenAI APIs"],
@@ -96,7 +96,7 @@ export const projects: Project[] = [
   },
   {
     id: "shafaf",
-    title: "Shafaf – Aid Coordination Platform",
+    title: "Shafaf, Aid Coordination Platform",
     description:
       "Aid coordination platform with real-time geospatial dashboarding for donors, mosques, and administrative teams.",
     techStack: ["Next.js", "Supabase", "Mapbox"],
@@ -115,7 +115,7 @@ export const experience: ExperienceItem[] = [
     organization: "University of Toronto",
     organizationUrl:
       "https://flight.utias.utoronto.ca/index.php/aerial-robotics-club/what-is-arc",
-    period: "Apr 2026 - Present",
+    period: "Apr 2026 to Present",
     logo: "/logos/utoronto.png",
     highlights: [
       "Contributing to research initiatives in autonomous systems and emerging technologies.",
@@ -127,7 +127,7 @@ export const experience: ExperienceItem[] = [
     title: "Software Engineering Intern",
     organization: "Magic Hour",
     organizationUrl: "https://www.magichour.ai/",
-    period: "2026 - Present",
+    period: "2026 to Present",
     logo: "/logos/magichour.png",
     highlights: [
       "Building product features across Magic Hour's AI video and image generation platform.",
@@ -139,7 +139,7 @@ export const experience: ExperienceItem[] = [
     title: "Full Stack Developer",
     organization: "Hack The Skies",
     organizationUrl: "https://www.hacktheskies.com/",
-    period: "Apr 2026 - Present",
+    period: "Apr 2026 to Present",
     logo: "/logos/hacktheskies.png",
     highlights: [
       "Building and refining platform features across frontend and backend systems.",
@@ -151,7 +151,7 @@ export const experience: ExperienceItem[] = [
     title: "Development Executive",
     organization: "Ignition Hacks",
     organizationUrl: "https://ignitionhacks.org/",
-    period: "2025 - Present",
+    period: "2025 to Present",
     logo: "/logos/ignitionhacks.png",
     highlights: [
       "Building and maintaining hackathon platform features for organizers and participants.",
@@ -162,7 +162,7 @@ export const experience: ExperienceItem[] = [
   {
     title: "Lead Web Designer",
     organization: "Campfire",
-    period: "Sep 2024 - Present",
+    period: "Sep 2024 to Present",
     logo: "/logos/campfire.png",
     highlights: [
       "Lead design and development of the organization's website and digital presence.",
