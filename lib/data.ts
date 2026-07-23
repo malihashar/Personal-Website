@@ -111,6 +111,18 @@ export const projects: Project[] = [
 
 export const experience: ExperienceItem[] = [
   {
+    title: "Software Engineering Intern",
+    organization: "Magic Hour",
+    organizationUrl: "https://www.magichour.ai/",
+    period: "2026 to Present",
+    logo: "/logos/magichour.png",
+    highlights: [
+      "Building product features across Magic Hour's AI video and image generation platform.",
+      "Shipping full-stack improvements for creator-facing tools and generation workflows.",
+      "Collaborating with engineers on reliability, UX, and production model integrations.",
+    ],
+  },
+  {
     title: "Research Intern",
     organization: "University of Toronto",
     organizationUrl:
@@ -121,18 +133,6 @@ export const experience: ExperienceItem[] = [
       "Contributing to research initiatives in autonomous systems and emerging technologies.",
       "Supporting experimentation and collaborative technical development in academic settings.",
       "Collaborating with interdisciplinary teams on applied AI and systems-based research projects.",
-    ],
-  },
-  {
-    title: "Software Engineering Intern",
-    organization: "Magic Hour",
-    organizationUrl: "https://www.magichour.ai/",
-    period: "2026 to Present",
-    logo: "/logos/magichour.png",
-    highlights: [
-      "Building product features across Magic Hour's AI video and image generation platform.",
-      "Shipping full-stack improvements for creator-facing tools and generation workflows.",
-      "Collaborating with engineers on reliability, UX, and production model integrations.",
     ],
   },
   {
