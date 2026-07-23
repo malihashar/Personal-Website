@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { experience } from "@/lib/data";
 
 export default function Experience() {
@@ -22,25 +21,16 @@ export default function Experience() {
             className="relative grid grid-cols-[2.8rem_minmax(0,1fr)] gap-x-4"
           >
             <div className="relative z-10 flex w-11 justify-center pt-3">
-              <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_10px_rgba(44,34,26,0.06)]">
-                {item.logo.endsWith(".svg") ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={item.logo}
-                    alt={`${item.organization} logo`}
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 object-contain"
-                  />
-                ) : (
-                  <Image
-                    src={item.logo}
-                    alt={`${item.organization} logo`}
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 object-contain"
-                  />
-                )}
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-[0_2px_10px_rgba(44,34,26,0.06)]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.logo}
+                  alt={`${item.organization} logo`}
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 object-contain"
+                  loading="lazy"
+                />
               </span>
               <span
                 className="timeline-node-ring pointer-events-none absolute inset-x-0 top-3 mx-auto h-11 w-11 rounded-xl border border-[var(--accent)]/35"

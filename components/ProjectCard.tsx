@@ -164,7 +164,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           className={`object-cover object-center transition duration-500 ease-out motion-reduce:transition-none ${
             imageFadeOut ? "opacity-0" : "opacity-100"
           } ${showVideoLayer ? "" : "group-hover:scale-[1.03]"}`}
-          unoptimized={project.image.endsWith(".svg") || project.image.endsWith(".png")}
+          unoptimized
         />
 
         {showVideoLayer && project.video ? (

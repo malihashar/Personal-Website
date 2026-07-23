@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#142015"/>
+      <stop offset="100%" stop-color="#1f2f22"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g2)"/>
+  <path d="M80 400 L180 300 L280 340 L400 180 L520 260 L640 120 L720 160" stroke="#7bd88f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="80" cy="400" r="8" fill="#ffba08"/><circle cx="400" cy="180" r="8" fill="#ffba08"/><circle cx="720" cy="160" r="8" fill="#ffba08"/>
+  <rect x="60" y="50" width="320" height="160" rx="16" fill="#1a2a1c" stroke="#7bd88f" stroke-width="2"/>
+  <text x="90" y="105" fill="#b8f2c0" font-family="ui-sans-serif,system-ui" font-size="28" font-weight="700">NSGA-II + D*</text>
+  <text x="90" y="145" fill="#f8f1e7" font-family="ui-sans-serif,system-ui" font-size="20">Optimal containment paths</text>
+  <text x="90" y="180" fill="#a8c4ad" font-family="ui-sans-serif,system-ui" font-size="16">Genetic search + pathfinding</text>
+</svg>

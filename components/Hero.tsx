@@ -1,18 +1,4 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
 export default function Hero() {
-  const [isFrench, setIsFrench] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFrench((prev) => !prev);
-    }, 1500);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
       id="home"
@@ -21,7 +7,7 @@ export default function Hero() {
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
         <p className="hero-greeting mb-3 text-[var(--accent)]">
           <span className="text-sm font-medium tracking-[0.14em] uppercase md:text-base">
-            {isFrench ? "Bonjour, je m'appelle" : "Hi, my name is"}
+            Hi, my name is
           </span>
         </p>
         <h1 className="font-heading text-5xl font-semibold leading-[1.05] tracking-tight text-[var(--foreground)] md:text-7xl">
@@ -40,7 +26,7 @@ export default function Hero() {
         </p>
 
         <p className="mt-3 max-w-lg text-base text-[var(--muted)] md:text-lg">
-          15-year-old developer focused on full-stack and AI systems.
+          16-year-old developer focused on full-stack and AI systems.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

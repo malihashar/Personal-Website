@@ -62,6 +62,16 @@ export const projects: Project[] = [
     demoUrl: "https://devpost.com/software/dubbify",
   },
   {
+    id: "wildfire-convlstm",
+    title: "Wildfire Prediction Model",
+    description:
+      "Spatiotemporal wildfire prediction model using ConvLSTM to forecast fire spread from sequential environmental and satellite inputs.",
+    techStack: ["Python", "ConvLSTM", "PyTorch", "NumPy"],
+    githubUrl: "https://github.com/malihashar",
+    image: "/images/projects/wildfire-convlstm.svg",
+    imageAlt: "ConvLSTM wildfire prediction model visualization",
+  },
+  {
     id: "rua",
     title: "Rua – AI Development Platform",
     description:
@@ -75,6 +85,16 @@ export const projects: Project[] = [
     demoUrl: "https://devpost.com/software/rua",
   },
   {
+    id: "wildfire-nsga",
+    title: "Wildfire Containment Pathfinding",
+    description:
+      "Used NSGA-II, a genetic algorithm, together with D* to find optimal paths for stopping wildfire spread under multi-objective constraints.",
+    techStack: ["Python", "NSGA-II", "D*", "Optimization"],
+    githubUrl: "https://github.com/malihashar",
+    image: "/images/projects/wildfire-nsga.svg",
+    imageAlt: "NSGA-II and D-star optimal wildfire containment path visualization",
+  },
+  {
     id: "shafaf",
     title: "Shafaf – Aid Coordination Platform",
     description:
@@ -86,19 +106,6 @@ export const projects: Project[] = [
     imageAlt: "Shafaf global geospatial dashboard with 3D map visualization",
     video: "/projects/shafaf.mp4",
     demoUrl: "https://devpost.com/software/shafaf",
-  },
-  {
-    id: "synapse",
-    title: "Synapse – Identity Network",
-    description:
-      "Networking platform with tradeable identity cards, profile customization, and a badge-driven engagement system.",
-    techStack: ["JavaScript", "Express", "MongoDB"],
-    githubUrl: "https://github.com/malihashar",
-    image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/172/337/datas/gallery.jpg",
-    imageAlt: "Synapse networking dashboard showing user profile and connections",
-    video: "/projects/synapse.mp4",
-    demoUrl: "https://devpost.com/software/synapse-y824pm",
   },
 ];
 
