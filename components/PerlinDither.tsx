@@ -140,14 +140,13 @@ export default function PerlinDither({
       if (t - last < 66) return;
       last = t;
 
-      // Ease scroll into the noise field so the pattern drifts with the page
+      // Ease scroll into the noise field so the pattern drifts with the page.
+      // Keep motion in noise-space only — CSS translate was clipping the field
+      // at the bottom of the viewport when scrolled.
       smoothScrollRef.current += (scrollYRef.current - smoothScrollRef.current) * 0.12;
       const scrollUnits = smoothScrollRef.current * 0.0045;
       const z = 0.001 * t * speed + scrollUnits * 0.35;
       const yScroll = scrollUnits;
-
-      // Subtle parallax so the field feels anchored to scroll depth
-      canvas.style.transform = `translate3d(0, ${smoothScrollRef.current * -0.08}px, 0)`;
 
       for (let y = 0; y < drawH; y++) {
         const ny = y * scale + yScroll;
@@ -179,7 +178,7 @@ export default function PerlinDither({
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="pointer-events-none fixed top-0 left-0 z-0 will-change-transform"
+      className="pointer-events-none fixed inset-0 z-0 h-full w-full"
       style={{ imageRendering: "pixelated" }}
     />
   );
