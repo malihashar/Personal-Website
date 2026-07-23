@@ -2,22 +2,22 @@ import { leadership } from "@/lib/data";
 
 export default function Leadership() {
   return (
-    <section
-      id="leadership"
-      className="mx-auto w-full max-w-6xl border-t border-white/[0.06] px-6 py-8"
-      aria-label="Leadership"
-    >
-      <h2 className="text-[11px] font-medium uppercase tracking-[0.14em] text-slate-600">
-        Leadership
-      </h2>
-      <ul className="mt-3 space-y-1.5 text-xs leading-relaxed text-slate-500 md:flex md:flex-wrap md:gap-x-8 md:gap-y-1 md:space-y-0">
-        {leadership.map((item) => (
-          <li key={item.title}>
-            <span className="text-slate-500">{item.title}</span>
-            <span className="text-slate-600"> — {item.detail}</span>
-          </li>
-        ))}
-      </ul>
+    <section id="leadership" className="relative z-10 mx-auto mt-12 w-full max-w-5xl px-6 pb-4">
+      <div className="border-t border-[var(--border)] pt-10">
+        <h2 className="font-heading text-xl font-semibold tracking-tight text-[var(--foreground)]">
+          Leadership
+        </h2>
+        <div className="mt-5 grid gap-4 sm:grid-cols-3">
+          {leadership.map((item) => (
+            <div key={item.title}>
+              <h3 className="font-heading text-sm font-semibold text-[var(--foreground)]">
+                {item.title}
+              </h3>
+              <p className="mt-1 text-sm text-[var(--muted)]">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

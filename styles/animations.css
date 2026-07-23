@@ -1,34 +1,17 @@
-.animated-gradient {
-  background:
-    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.2), transparent 42%),
-    radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.18), transparent 40%),
-    radial-gradient(circle at 70% 85%, rgba(167, 139, 250, 0.18), transparent 45%);
-}
-
-.grid-overlay {
-  background-image: linear-gradient(
-      rgba(148, 163, 184, 0.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-  background-size: 36px 36px;
-  mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
-}
-
 .section-card {
   border: 1px solid var(--card-border);
   background: linear-gradient(
     145deg,
-    rgba(15, 23, 42, 0.8),
-    rgba(15, 23, 42, 0.55)
+    rgba(245, 241, 236, 0.88),
+    rgba(234, 230, 225, 0.7)
   );
   backdrop-filter: blur(8px);
 }
 
 .glow-ring {
   box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.25),
-    0 12px 35px rgba(14, 165, 233, 0.18);
+    0 0 0 1px rgba(216, 107, 35, 0.18),
+    0 12px 35px rgba(44, 34, 26, 0.08);
 }
 
 .hero-greeting {
@@ -39,39 +22,58 @@
   min-height: 1.5rem;
 }
 
-.hero-tagline-cycle {
-  animation: taglineColorCycle 4s linear infinite;
+.nav-link {
+  position: relative;
 }
 
-@keyframes taglineColorCycle {
-  0% {
-    color: #ffffff;
-  }
-  33% {
-    color: #06b6d4;
-  }
-  66% {
-    color: #8b5cf6;
-  }
-  100% {
-    color: #ffffff;
-  }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--foreground);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 @keyframes timeline-node-pulse {
   0%,
   100% {
-    opacity: 0.55;
+    opacity: 0.45;
     transform: scale(1);
   }
   50% {
     opacity: 0;
-    transform: scale(1.85);
+    transform: scale(1.35);
   }
 }
 
 .timeline-node-ring {
   animation: timeline-node-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#home > div {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+#about {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
 }
 
 @keyframes project-snippet-caret {
@@ -87,4 +89,12 @@
 
 .project-snippet-caret {
   animation: project-snippet-caret 1.1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #home > div,
+  #about,
+  .timeline-node-ring {
+    animation: none !important;
+  }
 }

@@ -1,18 +1,18 @@
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[var(--border)]/70 bg-[var(--background)]/75 backdrop-blur-md">
+      <nav className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
         <a
           href="#home"
-          className="font-heading rounded-md border border-transparent px-2 py-1 text-sm font-semibold tracking-[0.2em] text-cyan-300 transition-all duration-200 hover:border-cyan-300/80 hover:bg-cyan-400/20 hover:text-cyan-100"
+          className="font-heading text-sm font-semibold tracking-[0.22em] text-[var(--foreground)] transition hover:text-[var(--accent)]"
         >
           MH
         </a>
@@ -21,7 +21,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium text-slate-200 transition hover:text-cyan-300"
+                className="nav-link text-sm font-medium text-[var(--muted)] transition hover:text-[var(--foreground)]"
               >
                 {link.label}
               </a>
