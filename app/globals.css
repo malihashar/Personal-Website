@@ -45,18 +45,99 @@ body {
 }
 
 @media (pointer: fine) {
-  *,
-  *::before,
-  *::after {
-    cursor: url(/cursor.svg) 7 12, auto !important;
+  html.has-site-cursor,
+  html.has-site-cursor * {
+    cursor: none !important;
   }
+}
 
-  a,
-  button,
-  [role="button"],
-  summary,
-  label[for],
-  .company-link {
-    cursor: url(/cursor.svg) 7 12, pointer !important;
-  }
+.site-cursor {
+  transition: opacity 0.2s ease;
+}
+
+.site-cursor-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: -2px;
+  margin-top: -2px;
+  will-change: transform;
+}
+
+.site-cursor-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  margin-left: -17px;
+  margin-top: -17px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(31, 26, 22, 0.45);
+  background: rgba(245, 241, 236, 0.12);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35) inset;
+  mix-blend-mode: multiply;
+  will-change: transform, width, height, margin;
+  transition:
+    width 0.22s ease,
+    height 0.22s ease,
+    margin 0.22s ease,
+    background 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.site-cursor-ring.is-hover {
+  width: 52px;
+  height: 52px;
+  margin-left: -26px;
+  margin-top: -26px;
+  border-color: rgba(216, 107, 35, 0.75);
+  background: rgba(216, 107, 35, 0.12);
+}
+
+.site-cursor-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px 5px 6px;
+  border-radius: 9999px;
+  border: 1px solid rgba(176, 166, 155, 0.9);
+  background: rgba(245, 241, 236, 0.94);
+  box-shadow: 0 8px 22px rgba(44, 34, 26, 0.12);
+  will-change: transform, opacity;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.site-cursor-card.is-hover {
+  border-color: rgba(216, 107, 35, 0.7);
+  background: #fffaf5;
+}
+
+.site-cursor-mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 30% 30%, #d86b23 0 35%, transparent 36%),
+    radial-gradient(circle at 70% 35%, #1f1a16 0 28%, transparent 29%),
+    radial-gradient(circle at 50% 70%, #d86b23 0 30%, transparent 31%),
+    #f0ece8;
+  border: 1px solid rgba(176, 166, 155, 0.8);
+  flex-shrink: 0;
+}
+
+.site-cursor-label {
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1f1a16;
+  line-height: 1;
 }
