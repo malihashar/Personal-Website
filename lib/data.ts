@@ -25,11 +25,6 @@ export interface ExperienceItem {
   logo: string;
 }
 
-export interface LeadershipItem {
-  title: string;
-  detail: string;
-}
-
 export interface SkillGroup {
   category: string;
   items: string[];
@@ -171,21 +166,6 @@ export const experience: ExperienceItem[] = [
       "Designed responsive web interfaces and branding assets for outreach initiatives.",
       "Enhanced engagement and visibility through modern UX and optimized content strategy.",
     ],
-  },
-];
-
-export const leadership: LeadershipItem[] = [
-  {
-    title: "DECA",
-    detail: "Top 2 PMK Provincials and strong case performance.",
-  },
-  {
-    title: "Robotics Executive",
-    detail: "Helped drive operations, planning, and team execution.",
-  },
-  {
-    title: "Science Olympiad",
-    detail: "Competed in timed science and engineering events.",
   },
 ];
 
