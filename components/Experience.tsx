@@ -75,6 +75,7 @@ export default function Experience() {
                   href={item.organizationUrl}
                   target="_blank"
                   rel="noreferrer"
+                  data-cursor={`Visit ${item.organization}`}
                   className="company-link mt-2 inline-flex items-center gap-1.5 rounded-full border border-[var(--accent)]/35 bg-[var(--accent)]/10 px-3 py-1 text-sm font-medium text-[var(--accent)] transition hover:border-[var(--accent)] hover:bg-[var(--accent)]/18 hover:text-[var(--foreground)]"
                 >
                   <span>{item.organization}</span>

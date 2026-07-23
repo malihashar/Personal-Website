@@ -3,9 +3,60 @@
 import { useEffect, useRef, useState } from "react";
 import { isInteractiveTarget, pointer } from "@/lib/pointer";
 
+function resolveActionLabel(target: EventTarget | null): string {
+  if (!(target instanceof Element)) return "";
+
+  const el = target.closest(
+    "a, button, [role='button'], summary, label[for], .company-link",
+  ) as HTMLElement | null;
+  if (!el) return "";
+
+  const custom = el.getAttribute("data-cursor");
+  if (custom?.trim()) return custom.trim();
+
+  if (el instanceof HTMLAnchorElement) {
+    const href = el.getAttribute("href") || "";
+    const text = (el.getAttribute("aria-label") || el.textContent || "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (href.startsWith("mailto:")) return "Send email";
+    if (href.startsWith("#")) {
+      const section = href.slice(1);
+      if (section === "projects") return "Jump to projects";
+      if (section === "contact") return "Jump to contact";
+      if (section === "about") return "Jump to about";
+      if (section === "experience") return "Jump to experience";
+      if (section === "skills") return "Jump to skills";
+      if (section === "home") return "Back to top";
+      return text || "Jump on page";
+    }
+
+    try {
+      const url = new URL(href, window.location.origin);
+      const host = url.hostname.replace(/^www\./, "");
+      if (host.includes("github")) return text ? `Open ${text}` : "Open GitHub";
+      if (host.includes("linkedin")) return "Open LinkedIn";
+      if (host.includes("devpost")) return text ? `Open ${text}` : "Open Devpost";
+      if (el.classList.contains("company-link") || text) {
+        const name = text.replace(/Visit site/i, "").trim() || host;
+        return `Visit ${name}`;
+      }
+      return `Open ${host}`;
+    } catch {
+      return text ? `Open ${text}` : "Open link";
+    }
+  }
+
+  const label = (el.getAttribute("aria-label") || el.textContent || "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return label || "Click";
+}
+
 /**
- * DOM cursor inspired by sites like autumn.ai / Locomotive demos:
- * sharp tip + lagging lens ring that expands over interactive UI.
+ * Tip + lagging ring. The follower only appears over interactive UI and
+ * shows a real action preview (where the click goes) instead of a decorative badge.
  */
 export default function SiteCursor() {
   const tipRef = useRef<HTMLDivElement>(null);
@@ -16,6 +67,7 @@ export default function SiteCursor() {
   const [enabled, setEnabled] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [action, setAction] = useState("");
 
   useEffect(() => {
     const fine = window.matchMedia("(pointer: fine)").matches;
@@ -35,6 +87,7 @@ export default function SiteCursor() {
       const nextHover = isInteractiveTarget(e.target);
       pointer.hover = nextHover;
       setHovering(nextHover);
+      setAction(nextHover ? resolveActionLabel(e.target) : "");
     };
 
     const onLeave = () => {
@@ -42,6 +95,7 @@ export default function SiteCursor() {
       pointer.hover = false;
       setVisible(false);
       setHovering(false);
+      setAction("");
     };
 
     window.addEventListener("pointermove", onMove, { passive: true });
@@ -51,9 +105,8 @@ export default function SiteCursor() {
     const tick = () => {
       rafRef.current = requestAnimationFrame(tick);
       const p = pos.current;
-      // Ring lags behind tip (magnetic / springy feel used on many Awwwards sites)
-      p.rx += (p.x - p.rx) * 0.18;
-      p.ry += (p.y - p.ry) * 0.18;
+      p.rx += (p.x - p.rx) * 0.2;
+      p.ry += (p.y - p.ry) * 0.2;
       pointer.sx += (p.x - pointer.sx) * 0.22;
       pointer.sy += (p.y - pointer.sy) * 0.22;
 
@@ -64,7 +117,7 @@ export default function SiteCursor() {
         ringRef.current.style.transform = `translate3d(${p.rx}px, ${p.ry}px, 0)`;
       }
       if (labelRef.current) {
-        labelRef.current.style.transform = `translate3d(${p.rx + 18}px, ${p.ry - 10}px, 0)`;
+        labelRef.current.style.transform = `translate3d(${p.rx + 22}px, ${p.ry - 14}px, 0)`;
       }
     };
     rafRef.current = requestAnimationFrame(tick);
@@ -107,10 +160,12 @@ export default function SiteCursor() {
 
       <div
         ref={labelRef}
-        className={`site-cursor-card ${hovering ? "is-hover" : ""}`}
+        className={`site-cursor-hint ${hovering && action ? "is-visible" : ""}`}
       >
-        <span className="site-cursor-mark" />
-        <span className="site-cursor-label">{hovering ? "Open" : "MH"}</span>
+        <span className="site-cursor-hint-action">{action}</span>
+        <span className="site-cursor-hint-arrow" aria-hidden>
+          ↗
+        </span>
       </div>
     </div>
   );
