@@ -22,6 +22,7 @@ export interface ExperienceItem {
   organizationUrl?: string;
   period: string;
   highlights: string[];
+  logo: string;
 }
 
 export interface LeadershipItem {
@@ -36,8 +37,20 @@ export interface SkillGroup {
 
 export const projects: Project[] = [
   {
+    id: "rouge",
+    title: "Rouge (Winner, Outstanding Project)",
+    description:
+      "Making learning PCB and circuits accessible through Minecraft, an interactive world where players build and understand electronics by doing.",
+    techStack: ["Java", "Minecraft", "Fabric", "ElevenLabs", "MongoDB", "Python"],
+    githubUrl: "https://github.com/Dhanika-Botejue/rouge",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/768/699/datas/gallery.jpg",
+    imageAlt: "Rouge Minecraft circuit-learning world and PCB teaching interface",
+    demoUrl: "https://devpost.com/software/rouge",
+  },
+  {
     id: "dubbify",
-    title: "Dubbify (Winner – Hack Canada)",
+    title: "Dubbify (Winner, Hack Canada)",
     description:
       "AI-powered content expansion platform with real-time text processing workflows connected to an LLM backend.",
     techStack: ["Next.js", "TypeScript", "FastAPI"],
@@ -49,8 +62,18 @@ export const projects: Project[] = [
     demoUrl: "https://devpost.com/software/dubbify",
   },
   {
+    id: "wildfire-convlstm",
+    title: "Wildfire Prediction Model",
+    description:
+      "Spatiotemporal wildfire prediction model using ConvLSTM to forecast fire spread from sequential environmental and satellite inputs.",
+    techStack: ["Python", "ConvLSTM", "PyTorch", "NumPy"],
+    githubUrl: "https://github.com/malihashar",
+    image: "/images/projects/wildfire-convlstm.svg",
+    imageAlt: "ConvLSTM wildfire prediction model visualization",
+  },
+  {
     id: "rua",
-    title: "Rua – AI Development Platform",
+    title: "Rua, AI Development Platform",
     description:
       "AI-powered platform to streamline application development with generative workflows for code iteration and rapid prototyping.",
     techStack: ["Next.js", "TypeScript", "GenAI APIs"],
@@ -62,8 +85,18 @@ export const projects: Project[] = [
     demoUrl: "https://devpost.com/software/rua",
   },
   {
+    id: "wildfire-nsga",
+    title: "Wildfire Containment Pathfinding",
+    description:
+      "Used NSGA-II, a genetic algorithm, together with D* to find optimal paths for stopping wildfire spread under multi-objective constraints.",
+    techStack: ["Python", "NSGA-II", "D*", "Optimization"],
+    githubUrl: "https://github.com/malihashar",
+    image: "/images/projects/wildfire-nsga.svg",
+    imageAlt: "NSGA-II and D-star optimal wildfire containment path visualization",
+  },
+  {
     id: "shafaf",
-    title: "Shafaf – Aid Coordination Platform",
+    title: "Shafaf, Aid Coordination Platform",
     description:
       "Aid coordination platform with real-time geospatial dashboarding for donors, mosques, and administrative teams.",
     techStack: ["Next.js", "Supabase", "Mapbox"],
@@ -74,28 +107,28 @@ export const projects: Project[] = [
     video: "/projects/shafaf.mp4",
     demoUrl: "https://devpost.com/software/shafaf",
   },
-  {
-    id: "synapse",
-    title: "Synapse – Identity Network",
-    description:
-      "Networking platform with tradeable identity cards, profile customization, and a badge-driven engagement system.",
-    techStack: ["JavaScript", "Express", "MongoDB"],
-    githubUrl: "https://github.com/malihashar",
-    image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/172/337/datas/gallery.jpg",
-    imageAlt: "Synapse networking dashboard showing user profile and connections",
-    video: "/projects/synapse.mp4",
-    demoUrl: "https://devpost.com/software/synapse-y824pm",
-  },
 ];
 
 export const experience: ExperienceItem[] = [
   {
+    title: "Software Engineering Intern",
+    organization: "Magic Hour",
+    organizationUrl: "https://www.magichour.ai/",
+    period: "2026 to Present",
+    logo: "/logos/magichour.png",
+    highlights: [
+      "Building product features across Magic Hour's AI video and image generation platform.",
+      "Shipping full-stack improvements for creator-facing tools and generation workflows.",
+      "Collaborating with engineers on reliability, UX, and production model integrations.",
+    ],
+  },
+  {
     title: "Research Intern",
-    organization: "University of Toronto (Hybrid)",
+    organization: "University of Toronto",
     organizationUrl:
       "https://flight.utias.utoronto.ca/index.php/aerial-robotics-club/what-is-arc",
-    period: "Apr 2026 - Present",
+    period: "Apr 2026 to Present",
+    logo: "/logos/utoronto.png",
     highlights: [
       "Contributing to research initiatives in autonomous systems and emerging technologies.",
       "Supporting experimentation and collaborative technical development in academic settings.",
@@ -106,7 +139,8 @@ export const experience: ExperienceItem[] = [
     title: "Full Stack Developer",
     organization: "Hack The Skies",
     organizationUrl: "https://www.hacktheskies.com/",
-    period: "Apr 2026 - Present",
+    period: "Apr 2026 to Present",
+    logo: "/logos/hacktheskies.png",
     highlights: [
       "Building and refining platform features across frontend and backend systems.",
       "Improving participant experience through scalable and efficient technical solutions.",
@@ -114,9 +148,22 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
+    title: "Development Executive",
+    organization: "Ignition Hacks",
+    organizationUrl: "https://ignitionhacks.org/",
+    period: "2025 to Present",
+    logo: "/logos/ignitionhacks.png",
+    highlights: [
+      "Building and maintaining hackathon platform features for organizers and participants.",
+      "Supporting technical infrastructure for a student-led arts and technology hackathon.",
+      "Collaborating with the executive team on product, logistics tooling, and event systems.",
+    ],
+  },
+  {
     title: "Lead Web Designer",
     organization: "Campfire",
-    period: "Sep 2024 - Present",
+    period: "Sep 2024 to Present",
+    logo: "/logos/campfire.png",
     highlights: [
       "Lead design and development of the organization's website and digital presence.",
       "Designed responsive web interfaces and branding assets for outreach initiatives.",
