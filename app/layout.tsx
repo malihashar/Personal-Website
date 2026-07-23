@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { DM_Sans, Inter } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const outfit = Outfit({
   variable: "--font-heading",
   subsets: ["latin"],
 });
 
-const dmSans = DM_Sans({
+const jakarta = Plus_Jakarta_Sans({
   variable: "--font-body",
   subsets: ["latin"],
 });
@@ -26,9 +26,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${outfit.variable} ${jakarta.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-slate-950 text-slate-100 flex flex-col">
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         {children}
       </body>
     </html>

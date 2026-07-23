@@ -6,10 +6,9 @@ import type { Project } from "@/lib/data";
 
 interface ProjectCardProps {
   project: Project;
-  reverse?: boolean;
 }
 
-export default function ProjectCard({ project, reverse = false }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const primedRef = useRef(false);
   const seekFallbackRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -155,99 +154,93 @@ export default function ProjectCard({ project, reverse = false }: ProjectCardPro
   const imageFadeOut = showVideoLayer && videoReady;
 
   return (
-    <article className="group section-card overflow-hidden rounded-2xl transition-[box-shadow] duration-300 ease-out motion-reduce:transition-none group-hover:shadow-[0_0_0_1px_rgba(56,189,248,0.12),0_0_55px_-8px_rgba(34,211,238,0.14),0_24px_50px_-18px_rgba(15,23,42,0.65)]">
-      <div
-        className={`grid md:grid-cols-2 md:items-stretch ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}
-      >
-        <div className="relative isolate aspect-[16/10] w-full overflow-hidden bg-slate-900 md:aspect-auto md:h-full md:min-h-[280px]">
-          <div className="absolute inset-0">
-            <Image
-              src={project.image}
-              alt={project.imageAlt}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className={`object-cover object-center transition duration-500 ease-out motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${
-                imageFadeOut ? "opacity-0" : "opacity-100"
-              } ${showVideoLayer ? "" : "group-hover:scale-[1.02]"}`}
-              unoptimized={project.image.endsWith(".svg") || project.image.endsWith(".png")}
-            />
-          </div>
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)]/40">
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--surface-2)]">
+        <Image
+          src={project.image}
+          alt={project.imageAlt}
+          fill
+          sizes="(max-width: 768px) 100vw, 40vw"
+          className={`object-cover object-center transition duration-500 ease-out motion-reduce:transition-none ${
+            imageFadeOut ? "opacity-0" : "opacity-100"
+          } ${showVideoLayer ? "" : "group-hover:scale-[1.03]"}`}
+          unoptimized={project.image.endsWith(".svg") || project.image.endsWith(".png")}
+        />
 
-          {showVideoLayer && project.video ? (
-            <video
-              ref={videoRef}
-              src={project.video}
-              className={`pointer-events-none absolute inset-0 z-10 h-full w-full select-none object-cover object-center transition-opacity duration-300 ease-out motion-reduce:transition-none ${
-                videoReady ? "opacity-100" : "opacity-0"
-              }`}
-              autoPlay
-              muted
-              playsInline
-              loop={!segmentLoop}
-              preload="metadata"
-              disablePictureInPicture
-              controls={false}
-              onLoadedMetadata={onLoadedMetadata}
-              onSeeked={onSeeked}
-              onPlaying={onPlaying}
-              onEnded={onEnded}
-              onTimeUpdate={onTimeUpdate}
-              onError={onVideoError}
-              aria-hidden
-            />
-          ) : null}
+        {showVideoLayer && project.video ? (
+          <video
+            ref={videoRef}
+            src={project.video}
+            className={`pointer-events-none absolute inset-0 z-10 h-full w-full select-none object-cover object-center transition-opacity duration-300 ${
+              videoReady ? "opacity-100" : "opacity-0"
+            }`}
+            autoPlay
+            muted
+            playsInline
+            loop={!segmentLoop}
+            preload="metadata"
+            disablePictureInPicture
+            controls={false}
+            onLoadedMetadata={onLoadedMetadata}
+            onSeeked={onSeeked}
+            onPlaying={onPlaying}
+            onEnded={onEnded}
+            onTimeUpdate={onTimeUpdate}
+            onError={onVideoError}
+            aria-hidden
+          />
+        ) : null}
 
-          <a
-            href={demoHref}
-            target="_blank"
-            rel="noreferrer"
-            className="absolute inset-0 z-20 rounded-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
-            onMouseEnter={startHoverMedia}
-            onMouseLeave={endHoverMedia}
-          >
-            <span className="sr-only">Open {project.title} demo</span>
-          </a>
+        <a
+          href={demoHref}
+          target="_blank"
+          rel="noreferrer"
+          className="absolute inset-0 z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+          onMouseEnter={startHoverMedia}
+          onMouseLeave={endHoverMedia}
+        >
+          <span className="sr-only">Open {project.title} demo</span>
+        </a>
+      </div>
+
+      <div className="flex flex-1 flex-col p-4 md:p-5">
+        <h3 className="font-heading text-base font-semibold tracking-tight text-[var(--foreground)] md:text-lg">
+          {project.title}
+        </h3>
+        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-[var(--muted)]">
+          {project.description}
+        </p>
+
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {project.techStack.slice(0, 4).map((tech) => (
+            <span
+              key={tech}
+              className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-2 py-0.5 text-[11px] text-[var(--muted)]"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
 
-        <div className="relative p-6 md:p-8">
-          <h3 className="font-heading text-2xl font-semibold text-slate-100">
-            {project.title}
-          </h3>
-          <p className="mt-3 text-sm font-normal leading-relaxed text-slate-300 md:text-base">
-            {project.description}
-          </p>
-
-          <div className="mt-5 flex flex-wrap gap-2">
-            {project.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-sky-300/30 bg-sky-400/10 px-3 py-1 text-xs text-sky-200"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-6 flex items-center gap-4 text-sm">
+        <div className="mt-auto flex items-center gap-4 pt-4 text-sm">
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="relative z-30 text-[var(--foreground)] transition hover:text-[var(--accent)]"
+          >
+            GitHub
+          </a>
+          {project.demoUrl ? (
             <a
-              href={project.githubUrl}
+              href={project.demoUrl}
               target="_blank"
               rel="noreferrer"
-              className="relative z-30 text-slate-200 transition hover:text-sky-300"
+              className="relative z-30 text-[var(--foreground)] transition hover:text-[var(--accent)]"
             >
-              GitHub
+              Devpost
             </a>
-            {project.demoUrl ? (
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="relative z-30 text-slate-200 transition hover:text-sky-300"
-              >
-                Devpost
-              </a>
-            ) : null}
-          </div>
+          ) : null}
         </div>
       </div>
     </article>

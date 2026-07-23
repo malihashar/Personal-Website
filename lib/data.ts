@@ -22,6 +22,7 @@ export interface ExperienceItem {
   organizationUrl?: string;
   period: string;
   highlights: string[];
+  logo: string;
 }
 
 export interface LeadershipItem {
@@ -35,6 +36,18 @@ export interface SkillGroup {
 }
 
 export const projects: Project[] = [
+  {
+    id: "rouge",
+    title: "Rouge (Winner – Outstanding Project)",
+    description:
+      "Making learning PCB and circuits accessible through Minecraft — an interactive world where players build and understand electronics by doing.",
+    techStack: ["Java", "Minecraft", "Fabric", "ElevenLabs", "MongoDB", "Python"],
+    githubUrl: "https://github.com/Dhanika-Botejue/rouge",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/768/699/datas/gallery.jpg",
+    imageAlt: "Rouge Minecraft circuit-learning world and PCB teaching interface",
+    demoUrl: "https://devpost.com/software/rouge",
+  },
   {
     id: "dubbify",
     title: "Dubbify (Winner – Hack Canada)",
@@ -92,10 +105,11 @@ export const projects: Project[] = [
 export const experience: ExperienceItem[] = [
   {
     title: "Research Intern",
-    organization: "University of Toronto (Hybrid)",
+    organization: "University of Toronto",
     organizationUrl:
       "https://flight.utias.utoronto.ca/index.php/aerial-robotics-club/what-is-arc",
     period: "Apr 2026 - Present",
+    logo: "/logos/utoronto.svg",
     highlights: [
       "Contributing to research initiatives in autonomous systems and emerging technologies.",
       "Supporting experimentation and collaborative technical development in academic settings.",
@@ -103,10 +117,23 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
+    title: "Software Engineering Intern",
+    organization: "Magic Hour",
+    organizationUrl: "https://www.magichour.ai/",
+    period: "2026 - Present",
+    logo: "/logos/magichour.svg",
+    highlights: [
+      "Building product features across Magic Hour's AI video and image generation platform.",
+      "Shipping full-stack improvements for creator-facing tools and generation workflows.",
+      "Collaborating with engineers on reliability, UX, and production model integrations.",
+    ],
+  },
+  {
     title: "Full Stack Developer",
     organization: "Hack The Skies",
     organizationUrl: "https://www.hacktheskies.com/",
     period: "Apr 2026 - Present",
+    logo: "/logos/hacktheskies.svg",
     highlights: [
       "Building and refining platform features across frontend and backend systems.",
       "Improving participant experience through scalable and efficient technical solutions.",
@@ -114,9 +141,22 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
+    title: "Development Executive",
+    organization: "Ignition Hacks",
+    organizationUrl: "https://ignitionhacks.org/",
+    period: "2025 - Present",
+    logo: "/logos/ignitionhacks.svg",
+    highlights: [
+      "Building and maintaining hackathon platform features for organizers and participants.",
+      "Supporting technical infrastructure for a student-led arts and technology hackathon.",
+      "Collaborating with the executive team on product, logistics tooling, and event systems.",
+    ],
+  },
+  {
     title: "Lead Web Designer",
     organization: "Campfire",
     period: "Sep 2024 - Present",
+    logo: "/logos/campfire.svg",
     highlights: [
       "Lead design and development of the organization's website and digital presence.",
       "Designed responsive web interfaces and branding assets for outreach initiatives.",

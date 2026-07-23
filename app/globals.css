@@ -2,17 +2,21 @@
 @import "../styles/animations.css";
 
 :root {
-  --background: #020617;
-  --foreground: #e2e8f0;
-  --muted-foreground: #94a3b8;
-  --card-bg: rgba(15, 23, 42, 0.65);
-  --card-border: rgba(148, 163, 184, 0.2);
+  --background: #eee9e2;
+  --foreground: #1f1914;
+  --muted: #7a726c;
+  --accent: #d86b23;
+  --border: #b0a69b;
+  --surface: #f5f1ec;
+  --surface-2: #eae6e1;
+  --card-bg: rgba(245, 241, 236, 0.72);
+  --card-border: rgba(176, 166, 155, 0.55);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-muted-foreground: var(--muted);
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
   --font-sans: var(--font-body);
@@ -21,9 +25,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), ui-sans-serif, sans-serif;
   font-weight: 450;
   scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 .font-heading {
@@ -35,6 +40,14 @@ body {
 }
 
 ::selection {
-  background: rgba(56, 189, 248, 0.35);
-  color: #f8fafc;
+  background: rgba(216, 107, 35, 0.22);
+  color: #1f1914;
+}
+
+@media (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: url(/cursor.svg) 7 12, auto !important;
+  }
 }
