@@ -116,7 +116,7 @@ export const experience: ExperienceItem[] = [
     organizationUrl:
       "https://flight.utias.utoronto.ca/index.php/aerial-robotics-club/what-is-arc",
     period: "Apr 2026 - Present",
-    logo: "/logos/utoronto.svg",
+    logo: "/logos/utoronto.png",
     highlights: [
       "Contributing to research initiatives in autonomous systems and emerging technologies.",
       "Supporting experimentation and collaborative technical development in academic settings.",
@@ -128,7 +128,7 @@ export const experience: ExperienceItem[] = [
     organization: "Magic Hour",
     organizationUrl: "https://www.magichour.ai/",
     period: "2026 - Present",
-    logo: "/logos/magichour.svg",
+    logo: "/logos/magichour.png",
     highlights: [
       "Building product features across Magic Hour's AI video and image generation platform.",
       "Shipping full-stack improvements for creator-facing tools and generation workflows.",
@@ -140,7 +140,7 @@ export const experience: ExperienceItem[] = [
     organization: "Hack The Skies",
     organizationUrl: "https://www.hacktheskies.com/",
     period: "Apr 2026 - Present",
-    logo: "/logos/hacktheskies.svg",
+    logo: "/logos/hacktheskies.png",
     highlights: [
       "Building and refining platform features across frontend and backend systems.",
       "Improving participant experience through scalable and efficient technical solutions.",
@@ -152,7 +152,7 @@ export const experience: ExperienceItem[] = [
     organization: "Ignition Hacks",
     organizationUrl: "https://ignitionhacks.org/",
     period: "2025 - Present",
-    logo: "/logos/ignitionhacks.svg",
+    logo: "/logos/ignitionhacks.png",
     highlights: [
       "Building and maintaining hackathon platform features for organizers and participants.",
       "Supporting technical infrastructure for a student-led arts and technology hackathon.",
@@ -163,7 +163,7 @@ export const experience: ExperienceItem[] = [
     title: "Lead Web Designer",
     organization: "Campfire",
     period: "Sep 2024 - Present",
-    logo: "/logos/campfire.svg",
+    logo: "/logos/campfire.png",
     highlights: [
       "Lead design and development of the organization's website and digital presence.",
       "Designed responsive web interfaces and branding assets for outreach initiatives.",
