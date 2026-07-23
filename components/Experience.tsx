@@ -1,5 +1,26 @@
 import { experience } from "@/lib/data";
 
+function ExternalArrow({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 16 16"
+      fill="none"
+      className={className}
+      width="14"
+      height="14"
+    >
+      <path
+        d="M4.5 11.5 11 5M7 4.5h4.5V9"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function Experience() {
   return (
     <section id="experience" className="relative z-10 mx-auto mt-16 w-full max-w-5xl px-6">
@@ -48,20 +69,26 @@ export default function Experience() {
                   {item.period}
                 </p>
               </div>
-              <p className="mt-1 text-sm text-[var(--accent)]">
-                {item.organizationUrl ? (
-                  <a
-                    href={item.organizationUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="transition hover:underline"
-                  >
-                    {item.organization}
-                  </a>
-                ) : (
-                  item.organization
-                )}
-              </p>
+
+              {item.organizationUrl ? (
+                <a
+                  href={item.organizationUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="company-link mt-2 inline-flex items-center gap-1.5 rounded-full border border-[var(--accent)]/35 bg-[var(--accent)]/10 px-3 py-1 text-sm font-medium text-[var(--accent)] transition hover:border-[var(--accent)] hover:bg-[var(--accent)]/18 hover:text-[var(--foreground)]"
+                >
+                  <span>{item.organization}</span>
+                  <ExternalArrow className="opacity-80" />
+                  <span className="text-[11px] font-normal tracking-wide text-[var(--muted)]">
+                    Visit site
+                  </span>
+                </a>
+              ) : (
+                <p className="mt-2 text-sm font-medium text-[var(--accent)]">
+                  {item.organization}
+                </p>
+              )}
+
               <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-[var(--muted)]">
                 {item.highlights.map((point) => (
                   <li key={point} className="flex gap-2">

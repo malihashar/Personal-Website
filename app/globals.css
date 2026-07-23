@@ -50,4 +50,13 @@ body {
   *::after {
     cursor: url(/cursor.svg) 7 12, auto !important;
   }
+
+  a,
+  button,
+  [role="button"],
+  summary,
+  label[for],
+  .company-link {
+    cursor: url(/cursor.svg) 7 12, pointer !important;
+  }
 }
