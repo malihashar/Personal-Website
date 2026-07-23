@@ -39,8 +39,38 @@
   min-height: 1.5rem;
 }
 
+.hero-copy {
+  animation: heroFadeUp 0.8s ease-out both;
+}
+
+.hero-portrait {
+  animation: heroPortraitIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 .hero-tagline-cycle {
   animation: taglineColorCycle 4s linear infinite;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroPortraitIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes taglineColorCycle {
