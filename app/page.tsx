@@ -2,6 +2,7 @@ import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import HoverHint from "@/components/HoverHint";
 import Navbar from "@/components/Navbar";
 import PerlinDither from "@/components/PerlinDither";
 import Projects from "@/components/Projects";
@@ -12,6 +13,7 @@ export default function Home() {
     <div className="relative min-h-screen overflow-x-hidden">
       <div className="pointer-events-none fixed inset-0 z-0 bg-[var(--background)]" />
       <PerlinDither />
+      <HoverHint />
       <div className="relative z-10">
         <Navbar />
         <main>
