@@ -24,7 +24,7 @@ export default function Contact() {
               href={link.href}
               target={link.label === "Email" ? undefined : "_blank"}
               rel={link.label === "Email" ? undefined : "noreferrer"}
-              className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition hover:border-[var(--accent)]/45 hover:text-[var(--accent)]"
             >
               {link.label}
             </a>
