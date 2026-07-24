@@ -162,11 +162,11 @@ export default function PerlinDither({
       mouse.sx += (mouse.x - mouse.sx) * 0.22;
       mouse.sy += (mouse.y - mouse.sy) * 0.22;
 
-      // Orange dither lens acts as the only cursor cue
+      // Smaller orange dither lens as the pointer cue
       const mx = mouse.sx / pixelSize;
       const my = mouse.sy / pixelSize;
-      const clearR = 9;
-      const ringR = 15;
+      const clearR = 5;
+      const ringR = 9;
       const clearR2 = clearR * clearR;
       const ringR2 = ringR * ringR;
       const hasPointer = mouse.active && mouse.sx > -1000;
@@ -185,11 +185,11 @@ export default function PerlinDither({
             const d2 = dx * dx + dy * dy;
             if (d2 < clearR2) {
               const fall = 1 - d2 / clearR2;
-              n -= fall * fall * 0.78;
+              n -= fall * fall * 0.7;
             } else if (d2 < ringR2) {
               const mid = (d2 - clearR2) / (ringR2 - clearR2);
               const band = Math.sin(Math.PI * mid);
-              n += band * band * 0.34;
+              n += band * band * 0.28;
             }
           }
 

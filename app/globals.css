@@ -60,3 +60,43 @@ body {
     cursor: auto !important;
   }
 }
+
+.hover-hint {
+  display: inline-flex;
+  max-width: 220px;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(176, 166, 155, 0.95);
+  background: rgba(31, 26, 22, 0.92);
+  color: #f5f1ec;
+  box-shadow: 0 10px 28px rgba(44, 34, 26, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+  transition:
+    opacity 0.16s ease,
+    visibility 0.16s ease;
+}
+
+.hover-hint.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hover-hint-action {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.hover-hint-arrow {
+  flex-shrink: 0;
+  font-size: 12px;
+  opacity: 0.8;
+}

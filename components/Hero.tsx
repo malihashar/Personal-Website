@@ -36,12 +36,14 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
             <a
               href="#experience"
+              data-cursor="View experience"
               className="rounded-lg bg-[var(--foreground)] px-5 py-2.5 text-sm font-medium text-[var(--background)] transition hover:opacity-90"
             >
               View experience
             </a>
             <a
               href="#projects"
+              data-cursor="View projects"
               className="rounded-lg border border-[var(--border)] bg-[var(--surface)]/70 px-5 py-2.5 text-sm font-medium text-[var(--foreground)] backdrop-blur-sm transition hover:border-[var(--accent)]/50"
             >
               View projects
