@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { pointer } from "@/lib/pointer";
 
 const PERM = new Uint8Array(512);
 const BASE = new Uint8Array(256);
@@ -138,7 +137,7 @@ export default function PerlinDither({
     let last = 0;
     const tick = (t: number) => {
       rafRef.current = requestAnimationFrame(tick);
-      if (t - last < 50) return;
+      if (t - last < 66) return;
       last = t;
 
       smoothScrollRef.current += (scrollYRef.current - smoothScrollRef.current) * 0.12;
@@ -146,42 +145,15 @@ export default function PerlinDither({
       const z = 0.001 * t * speed + scrollUnits * 0.35;
       const yScroll = scrollUnits;
 
-      // Cursor → buffer coords; clear a soft lens and ripple a denser ring
-      const mx = pointer.sx / pixelSize;
-      const my = pointer.sy / pixelSize;
-      const hoverBoost = pointer.hover ? 1.35 : 1;
-      const clearR = 11 * hoverBoost;
-      const ringR = 18 * hoverBoost;
-      const clearR2 = clearR * clearR;
-      const ringR2 = ringR * ringR;
-      const hasPointer = pointer.active && pointer.sx > -1000;
-
       for (let y = 0; y < drawH; y++) {
         const ny = y * scale + yScroll;
         const row = y * bufW;
         const bayerRow = (y & 3) * 4;
-        const dy = y - my;
         for (let x = 0; x < drawW; x++) {
-          let n = 0.5 * perlin3(x * scale, ny, z) + 0.5;
-          let threshold = 0.0625 * BAYER[bayerRow + (x & 3)];
-
-          if (hasPointer) {
-            const dx = x - mx;
-            const d2 = dx * dx + dy * dy;
-            if (d2 < clearR2) {
-              // Push field outward under the cursor (spotlight / repulsion)
-              const fall = 1 - d2 / clearR2;
-              n -= fall * fall * 0.72;
-            } else if (d2 < ringR2) {
-              // Condensed wake ring so the interaction reads clearly
-              const mid = (d2 - clearR2) / (ringR2 - clearR2);
-              const band = Math.sin(Math.PI * mid);
-              n += band * band * 0.28;
-            }
-          }
-
+          const n = 0.5 * perlin3(x * scale, ny, z) + 0.5;
+          const threshold = 0.0625 * BAYER[bayerRow + (x & 3)];
           if (2.5 * Math.max(n - 0.45, 0) > threshold) {
-            pixels[row + x] = rgbPacked | ((18 + 50 * Math.min(n, 1)) << 24);
+            pixels[row + x] = rgbPacked | ((18 + 50 * n) << 24);
           } else {
             pixels[row + x] = 0;
           }
