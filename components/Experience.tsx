@@ -54,7 +54,7 @@ export default function Experience() {
                 />
               </span>
               <span
-                className="timeline-node-ring pointer-events-none absolute inset-x-0 top-3 mx-auto h-11 w-11 rounded-xl border border-[var(--accent)]/35"
+                className="timeline-node-ring pointer-events-none absolute inset-x-0 top-3 mx-auto h-11 w-11 rounded-xl border border-[var(--accent)]/20"
                 style={{ animationDelay: `${index * 0.45}s` }}
                 aria-hidden
               />
@@ -75,8 +75,7 @@ export default function Experience() {
                   href={item.organizationUrl}
                   target="_blank"
                   rel="noreferrer"
-                  data-cursor={`Visit ${item.organization}`}
-                  className="company-link mt-2 inline-flex items-center gap-1.5 rounded-full border border-[var(--accent)]/35 bg-[var(--accent)]/10 px-3 py-1 text-sm font-medium text-[var(--accent)] transition hover:border-[var(--accent)] hover:bg-[var(--accent)]/18 hover:text-[var(--foreground)]"
+                  className="company-link mt-2 inline-flex items-center gap-1.5 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/8 px-3 py-1 text-sm font-medium text-[var(--accent)] transition hover:border-[var(--accent)]/55 hover:bg-[var(--accent)]/12"
                 >
                   <span>{item.organization}</span>
                   <ExternalArrow className="opacity-80" />

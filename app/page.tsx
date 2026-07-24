@@ -5,7 +5,6 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import PerlinDither from "@/components/PerlinDither";
 import Projects from "@/components/Projects";
-import SiteCursor from "@/components/SiteCursor";
 import Skills from "@/components/Skills";
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
     <div className="relative min-h-screen overflow-x-hidden">
       <div className="pointer-events-none fixed inset-0 z-0 bg-[var(--background)]" />
       <PerlinDither />
-      <SiteCursor />
       <div className="relative z-10">
         <Navbar />
         <main>

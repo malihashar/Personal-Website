@@ -154,7 +154,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const imageFadeOut = showVideoLayer && videoReady;
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)]/40">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:border-[var(--accent)]/25">
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--surface-2)]">
         <Image
           src={project.image}
@@ -163,7 +163,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           sizes="(max-width: 768px) 100vw, 40vw"
           className={`object-cover object-center transition duration-500 ease-out motion-reduce:transition-none ${
             imageFadeOut ? "opacity-0" : "opacity-100"
-          } ${showVideoLayer ? "" : "group-hover:scale-[1.03]"}`}
+          } ${showVideoLayer ? "" : "group-hover:scale-[1.015]"}`}
           unoptimized
         />
 
