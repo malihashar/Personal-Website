@@ -61,13 +61,15 @@ function resolveActionLabel(target: EventTarget | null): string {
   return label || "Click";
 }
 
-/** Action popup near the pointer when hovering links/buttons. No custom cursor chrome. */
+/** Grey lagging circle + action popup. System cursor stays hidden. */
 export default function HoverHint() {
+  const ringRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef(0);
   const pos = useRef({ x: -100, y: -100, sx: -100, sy: -100 });
   const [enabled, setEnabled] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [onPage, setOnPage] = useState(false);
+  const [hovering, setHovering] = useState(false);
   const [action, setAction] = useState("");
 
   useEffect(() => {
@@ -79,14 +81,16 @@ export default function HoverHint() {
     const onMove = (e: PointerEvent) => {
       pos.current.x = e.clientX;
       pos.current.y = e.clientY;
+      setOnPage(true);
 
-      const hovering = isInteractiveTarget(e.target);
-      setVisible(hovering);
-      setAction(hovering ? resolveActionLabel(e.target) : "");
+      const nextHover = isInteractiveTarget(e.target);
+      setHovering(nextHover);
+      setAction(nextHover ? resolveActionLabel(e.target) : "");
     };
 
     const onLeave = () => {
-      setVisible(false);
+      setOnPage(false);
+      setHovering(false);
       setAction("");
     };
 
@@ -96,10 +100,13 @@ export default function HoverHint() {
     const tick = () => {
       rafRef.current = requestAnimationFrame(tick);
       const p = pos.current;
-      p.sx += (p.x - p.sx) * 0.22;
-      p.sy += (p.y - p.sy) * 0.22;
+      p.sx += (p.x - p.sx) * 0.2;
+      p.sy += (p.y - p.sy) * 0.2;
+      if (ringRef.current) {
+        ringRef.current.style.transform = `translate3d(${p.sx}px, ${p.sy}px, 0)`;
+      }
       if (labelRef.current) {
-        labelRef.current.style.transform = `translate3d(${p.sx + 16}px, ${p.sy + 18}px, 0)`;
+        labelRef.current.style.transform = `translate3d(${p.sx + 18}px, ${p.sy + 18}px, 0)`;
       }
     };
     rafRef.current = requestAnimationFrame(tick);
@@ -115,14 +122,22 @@ export default function HoverHint() {
 
   return (
     <div
-      ref={labelRef}
       aria-hidden
-      className={`hover-hint pointer-events-none fixed top-0 left-0 z-[100] ${
-        visible && action ? "is-visible" : ""
+      className={`pointer-events-none fixed inset-0 z-[100] ${
+        onPage ? "opacity-100" : "opacity-0"
       }`}
     >
-      <span className="hover-hint-action">{action}</span>
-      <span className="hover-hint-arrow">↗</span>
+      <div
+        ref={ringRef}
+        className={`cursor-ring ${hovering ? "is-hover" : ""}`}
+      />
+      <div
+        ref={labelRef}
+        className={`hover-hint ${hovering && action ? "is-visible" : ""}`}
+      >
+        <span className="hover-hint-action">{action}</span>
+        <span className="hover-hint-arrow">↗</span>
+      </div>
     </div>
   );
 }
