@@ -24,26 +24,29 @@ export default function Hero() {
             </a>
           </h1>
 
-          <p className="mt-5 text-lg font-medium text-[var(--foreground)]/80 md:text-xl">
-            Building tech that shapes tomorrow
+          <p className="mt-5 text-lg font-medium text-[var(--foreground)]/85 md:text-xl">
+            Full-stack developer building AI-powered products.
           </p>
 
-          <p className="mt-3 text-base text-[var(--muted)] md:text-lg">
-            16-year-old developer focused on full-stack and AI systems.
+          <p className="mt-3 max-w-md text-base leading-relaxed text-[var(--muted)] md:text-lg">
+            I ship real web apps with Next.js, TypeScript, and FastAPI — focused on
+            systems people can actually use.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
             <a
-              href="#projects"
+              href="#experience"
+              data-cursor="View experience"
               className="rounded-lg bg-[var(--foreground)] px-5 py-2.5 text-sm font-medium text-[var(--background)] transition hover:opacity-90"
             >
-              View projects
+              View experience
             </a>
             <a
-              href="#contact"
+              href="#projects"
+              data-cursor="View projects"
               className="rounded-lg border border-[var(--border)] bg-[var(--surface)]/70 px-5 py-2.5 text-sm font-medium text-[var(--foreground)] backdrop-blur-sm transition hover:border-[var(--accent)]"
             >
-              Get in touch
+              View projects
             </a>
           </div>
 
