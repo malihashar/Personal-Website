@@ -43,3 +43,20 @@ body {
   background: rgba(216, 107, 35, 0.22);
   color: #1f1914;
 }
+
+/* System cursor hidden — orange dither hover is the only pointer cue */
+@media (pointer: fine) {
+  html,
+  body,
+  * {
+    cursor: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (pointer: fine) {
+  html,
+  body,
+  * {
+    cursor: auto !important;
+  }
+}
