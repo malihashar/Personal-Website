@@ -61,7 +61,39 @@ body {
   }
 }
 
+.cursor-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  margin-top: -11px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(31, 26, 22, 0.32);
+  background: transparent;
+  will-change: transform, width, height, margin, border-color;
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    margin 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.cursor-ring.is-hover {
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+  margin-top: -18px;
+  border-color: rgba(216, 107, 35, 0.7);
+  background: rgba(216, 107, 35, 0.08);
+}
+
 .hover-hint {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: inline-flex;
   max-width: 220px;
   align-items: center;
