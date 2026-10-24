@@ -73,7 +73,7 @@ interface PerlinDitherProps {
 
 export default function PerlinDither({
   pixelSize = 5,
-  color = "#d4783a",
+  color = "#3b82f6",
   scale = 0.04,
   speed = 0.1,
 }: PerlinDitherProps) {
@@ -162,7 +162,7 @@ export default function PerlinDither({
       mouse.sx += (mouse.x - mouse.sx) * 0.22;
       mouse.sy += (mouse.y - mouse.sy) * 0.22;
 
-      // Smaller orange dither lens as the pointer cue
+      // Smaller blue dither lens as the pointer cue
       const mx = mouse.sx / pixelSize;
       const my = mouse.sy / pixelSize;
       const clearR = 5;

@@ -5,7 +5,7 @@
   --background: #eee9e2;
   --foreground: #1f1914;
   --muted: #7a726c;
-  --accent: #d86b23;
+  --accent: #2563eb;
   --border: #b0a69b;
   --surface: #f5f1ec;
   --surface-2: #eae6e1;
@@ -40,11 +40,11 @@ body {
 }
 
 ::selection {
-  background: rgba(216, 107, 35, 0.22);
+  background: rgba(37, 99, 235, 0.22);
   color: #1f1914;
 }
 
-/* System cursor hidden — orange dither hover is the only pointer cue */
+/* System cursor hidden — blue dither hover is the only pointer cue */
 @media (pointer: fine) {
   html,
   body,
@@ -86,8 +86,8 @@ body {
   height: 36px;
   margin-left: -18px;
   margin-top: -18px;
-  border-color: rgba(216, 107, 35, 0.7);
-  background: rgba(216, 107, 35, 0.08);
+  border-color: rgba(37, 99, 235, 0.7);
+  background: rgba(37, 99, 235, 0.08);
 }
 
 .hover-hint {
