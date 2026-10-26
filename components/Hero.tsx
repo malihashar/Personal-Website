@@ -25,12 +25,14 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 text-lg font-medium text-[var(--foreground)]/85 md:text-xl">
-            Full-stack developer building AI-powered products.
+            I turn research papers and hackathon whiteboards into software real
+            people use.
           </p>
 
           <p className="mt-3 max-w-md text-base leading-relaxed text-[var(--muted)] md:text-lg">
-            I ship real web apps with Next.js, TypeScript, and FastAPI — focused on
-            systems people can actually use.
+            Lately that means 4-step head swaps at Magic Hour, wildfire drones that
+            plan missions in under 0.1 seconds, and the portal that decides who gets
+            into JAMHacks.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
@@ -66,6 +68,15 @@ export default function Hero() {
               className="underline-offset-4 transition hover:text-[var(--foreground)] hover:underline"
             >
               LinkedIn
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="Open resume"
+              className="underline-offset-4 transition hover:text-[var(--foreground)] hover:underline"
+            >
+              Resume
             </a>
             <a
               href="mailto:alihashar0406@gmail.com"

@@ -43,15 +43,25 @@ export default function Experience() {
           >
             <div className="relative z-10 flex w-11 justify-center pt-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-[0_2px_10px_rgba(44,34,26,0.06)]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.logo}
-                  alt={`${item.organization} logo`}
-                  width={32}
-                  height={32}
-                  className="h-8 w-8 object-contain"
-                  loading="lazy"
-                />
+                {item.logo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={item.logo}
+                    alt={`${item.organization} logo`}
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 object-contain"
+                    loading="lazy"
+                  />
+                ) : (
+                  <span
+                    className="font-heading text-xs font-semibold tracking-wide text-[var(--foreground)]"
+                    aria-label={`${item.organization} logo`}
+                  >
+                    {item.organization[0]}
+                    {item.organization.slice(1).match(/[A-Z]/g)?.at(-1)}
+                  </span>
+                )}
               </span>
               <span
                 className="timeline-node-ring pointer-events-none absolute inset-x-0 top-3 mx-auto h-11 w-11 rounded-xl border border-[var(--accent)]/20"

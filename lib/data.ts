@@ -22,7 +22,8 @@ export interface ExperienceItem {
   organizationUrl?: string;
   period: string;
   highlights: string[];
-  logo: string;
+  /** Falls back to organization initials when omitted */
+  logo?: string;
 }
 
 export interface SkillGroup {
@@ -33,14 +34,14 @@ export interface SkillGroup {
 export const projects: Project[] = [
   {
     id: "rouge",
-    title: "Rouge (Winner, Outstanding Project)",
+    title: "Rouge (2nd Place, JAMHacks 2026)",
     description:
-      "Making learning PCB and circuits accessible through Minecraft, an interactive world where players build and understand electronics by doing.",
-    techStack: ["Java", "Minecraft", "Fabric", "ElevenLabs", "MongoDB", "Python"],
+      "AI Minecraft mod that teaches redstone. Ask for a piston door and follow a translucent hologram, one verified block at a time.",
+    techStack: ["Java", "Fabric API", "OpenRouter", "LLMs"],
     githubUrl: "https://github.com/Dhanika-Botejue/rouge",
     image:
       "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/768/699/datas/gallery.jpg",
-    imageAlt: "Rouge Minecraft circuit-learning world and PCB teaching interface",
+    imageAlt: "Rouge Minecraft mod guiding a player through a redstone build",
     demoUrl: "https://devpost.com/software/rouge",
   },
   {
@@ -60,9 +61,9 @@ export const projects: Project[] = [
     id: "wildfire-convlstm",
     title: "Wildfire Prediction Model",
     description:
-      "Spatiotemporal wildfire prediction model using ConvLSTM to forecast fire spread from sequential environmental and satellite inputs.",
-    techStack: ["Python", "ConvLSTM", "PyTorch", "NumPy"],
-    githubUrl: "https://github.com/malihashar",
+      "ConvLSTM fire spread model fed by YOLO fire and smoke detection. 97.7% IoU in simulation, then retrained on 607 real US wildfires.",
+    techStack: ["Python", "PyTorch", "YOLO", "ConvLSTM"],
+    githubUrl: "https://github.com/malihashar/wildfire-drone",
     image: "/images/projects/wildfire-convlstm.jpg",
     imageAlt:
       "Bird's-eye UAV infrared view detecting wildfire hotspots across mountain terrain",
@@ -84,9 +85,9 @@ export const projects: Project[] = [
     id: "wildfire-nsga",
     title: "Wildfire Containment Pathfinding",
     description:
-      "Used NSGA-II, a genetic algorithm, together with D* to find optimal paths for stopping wildfire spread under multi-objective constraints.",
-    techStack: ["Python", "NSGA-II", "D*", "Optimization"],
-    githubUrl: "https://github.com/malihashar",
+      "NSGA-II plans drone suppression missions for 12 fires in under 0.1 seconds, and D* Lite routes each drone around live fire cells.",
+    techStack: ["Python", "NSGA-II", "D* Lite", "Optimization"],
+    githubUrl: "https://github.com/malihashar/wildfire-drone",
     image: "/images/projects/wildfire-nsga.jpg",
     imageAlt:
       "Aerial view of a wildfire fuel break containment path separating burned hillside from a community",
@@ -109,14 +110,24 @@ export const projects: Project[] = [
 export const experience: ExperienceItem[] = [
   {
     title: "Software Engineering Intern",
-    organization: "Magic Hour",
+    organization: "Magic Hour (YC W24)",
     organizationUrl: "https://www.magichour.ai/",
-    period: "2026 to Present",
+    period: "Jun 2026 to Present",
     logo: "/logos/magichour.png",
     highlights: [
-      "Building product features across Magic Hour's AI video and image generation platform.",
-      "Shipping full-stack improvements for creator-facing tools and generation workflows.",
-      "Collaborating with engineers on reliability, UX, and production model integrations.",
+      "Built a URL-to-ad generator that scrapes product names, prices, images, and reviews from JSON-LD and OpenGraph tags, turning one product page into 9 distinct ad creatives.",
+      "Expanded the Magic Hour API to 3 external platforms with an n8n community node, an Apify Actor, and a Grok integration for face swap, image, and video generation.",
+      "Shipped a masked crop-and-stitch head swap that runs in 4 diffusion steps after benchmarking 9 open-source face swap model families.",
+    ],
+  },
+  {
+    title: "Software Developer",
+    organization: "JAMHacks",
+    organizationUrl: "https://jamhacks.ca/",
+    period: "Aug 2026 to Present",
+    highlights: [
+      "Owned 52% of completed hacker portal tasks by shipping 12 features, including the grading queue, weighted scoring, applicant ranking, and final acceptance workflow.",
+      "Built a QR system for 200+ hackers over 36 hours covering meal scanning with duplicate detection, hardware checkout, returns, and loan tracking.",
     ],
   },
   {
@@ -124,12 +135,22 @@ export const experience: ExperienceItem[] = [
     organization: "University of Toronto",
     organizationUrl:
       "https://flight.utias.utoronto.ca/index.php/aerial-robotics-club/what-is-arc",
-    period: "Apr 2026 to Present",
+    period: "Apr 2026 to Sep 2026",
     logo: "/logos/utoronto.png",
     highlights: [
-      "Contributing to research initiatives in autonomous systems and emerging technologies.",
-      "Supporting experimentation and collaborative technical development in academic settings.",
-      "Collaborating with interdisciplinary teams on applied AI and systems-based research projects.",
+      "Reached 97.7% IoU in simulated fire spread prediction while designing autonomous UAV flight, perception, and mission planning with master's students.",
+      "Turned published UAV task planning research into reproducible experiments that plan suppression missions for 12 targets in under 0.1 seconds.",
+    ],
+  },
+  {
+    title: "President",
+    organization: "Ignition Hacks",
+    organizationUrl: "https://ignitionhacks.org/",
+    period: "Jul 2026 to Present",
+    logo: "/logos/ignitionhacks.png",
+    highlights: [
+      "Leading a 30+ person team across development, design, sponsorship, logistics, and marketing to run a free 48-hour hackathon.",
+      "Secured $4,500 in cash sponsorship from CSE, Shopify, Queen's University, and others, plus 18 in-kind partners including ElevenLabs, n8n, and Render.",
     ],
   },
   {
@@ -142,18 +163,6 @@ export const experience: ExperienceItem[] = [
       "Building and refining platform features across frontend and backend systems.",
       "Improving participant experience through scalable and efficient technical solutions.",
       "Contributing to architecture decisions and deployment workflows for event-facing platforms.",
-    ],
-  },
-  {
-    title: "Development Executive",
-    organization: "Ignition Hacks",
-    organizationUrl: "https://ignitionhacks.org/",
-    period: "2025 to Present",
-    logo: "/logos/ignitionhacks.png",
-    highlights: [
-      "Building and maintaining hackathon platform features for organizers and participants.",
-      "Supporting technical infrastructure for a student-led arts and technology hackathon.",
-      "Collaborating with the executive team on product, logistics tooling, and event systems.",
     ],
   },
   {
@@ -176,14 +185,14 @@ export const skills: SkillGroup[] = [
   },
   {
     category: "Frameworks",
-    items: ["Next.js", "React", "Node.js", "Express", "FastAPI"],
+    items: ["Next.js", "React", "Node.js", "Express", "FastAPI", "PyTorch", "Hugging Face"],
   },
   {
-    category: "Tools",
-    items: ["Git", "GCP", "VS Code"],
+    category: "Tools & Databases",
+    items: ["Git", "PostgreSQL", "Supabase", "MongoDB", "Firebase", "Drizzle ORM", "GCP", "n8n"],
   },
   {
-    category: "Databases",
-    items: ["PostgreSQL", "MongoDB"],
+    category: "AI/ML",
+    items: ["Diffusion Models", "LoRA", "YOLO", "ConvLSTM", "ComfyUI", "NSGA-II"],
   },
 ];
