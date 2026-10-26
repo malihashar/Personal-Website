@@ -25,14 +25,14 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 text-lg font-medium text-[var(--foreground)]/85 md:text-xl">
-            I turn research papers and hackathon whiteboards into software real
-            people use.
+            I&apos;ve taught drones to dodge wildfires and Minecraft to teach
+            redstone.
           </p>
 
           <p className="mt-3 max-w-md text-base leading-relaxed text-[var(--muted)] md:text-lg">
-            Lately that means 4-step head swaps at Magic Hour, wildfire drones that
-            plan missions in under 0.1 seconds, and the portal that decides who gets
-            into JAMHacks.
+            Now I&apos;m teaching diffusion models to swap heads in 4 steps at Magic
+            Hour (YC W24). Fluent in Python, TypeScript, and talking sponsors into
+            funding hackathons.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
