@@ -3,6 +3,7 @@ const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
+  { label: "Resume", href: "/resume.pdf" },
 ];
 
 export default function Navbar() {
@@ -20,6 +21,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
+                {...(link.href.endsWith(".pdf") && { target: "_blank", rel: "noreferrer" })}
                 className="nav-link text-sm font-medium text-[var(--muted)] transition hover:text-[var(--foreground)]"
               >
                 {link.label}
