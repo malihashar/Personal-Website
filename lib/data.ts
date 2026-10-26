@@ -125,6 +125,7 @@ export const experience: ExperienceItem[] = [
     organization: "JAMHacks",
     organizationUrl: "https://jamhacks.ca/",
     period: "Aug 2026 to Present",
+    logo: "/logos/jamhacks.svg",
     highlights: [
       "Owned 52% of completed hacker portal tasks by shipping 12 features, including the grading queue, weighted scoring, applicant ranking, and final acceptance workflow.",
       "Built a QR system for 200+ hackers over 36 hours covering meal scanning with duplicate detection, hardware checkout, returns, and loan tracking.",
@@ -167,7 +168,8 @@ export const experience: ExperienceItem[] = [
   },
   {
     title: "Lead Web Designer",
-    organization: "Campfire",
+    organization: "Campfire Mississauga",
+    organizationUrl: "https://campfire.hackclub.com/mississauga",
     period: "Sep 2024 to Present",
     logo: "/logos/campfire.png",
     highlights: [
